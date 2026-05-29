@@ -121,6 +121,31 @@ function loadState() {
                 
                 saveToLocalStorage();
             }
+            
+            // Self-correction check: if loaded state uses Unsplash avatars for players while FACTORY_DATA has local files (stale cache)
+            let needsAvatarSync = false;
+            if (state.players && FACTORY_DATA.players) {
+                const loadedHasUnsplash = state.players.some(p => p.avatar && p.avatar.includes("unsplash.com"));
+                const factoryHasLocal = FACTORY_DATA.players.some(p => p.avatar && p.avatar.startsWith("images/"));
+                if (loadedHasUnsplash && factoryHasLocal) {
+                    needsAvatarSync = true;
+                }
+            }
+            if (needsAvatarSync) {
+                console.log("Cached state contains stale placeholder avatars. Synchronizing contender profiles...");
+                state.players = JSON.parse(JSON.stringify(FACTORY_DATA.players));
+                
+                // Also sync years' photos presets just in case they have unsplash placeholders
+                if (state.years && FACTORY_DATA.years) {
+                    for (let y in FACTORY_DATA.years) {
+                        if (state.years[y] && FACTORY_DATA.years[y].photos) {
+                            state.years[y].photos = JSON.parse(JSON.stringify(FACTORY_DATA.years[y].photos));
+                        }
+                    }
+                }
+                
+                saveToLocalStorage();
+            }
         } else {
             state = JSON.parse(JSON.stringify(FACTORY_DATA));
             saveToLocalStorage();
