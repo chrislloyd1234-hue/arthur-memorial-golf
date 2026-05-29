@@ -1,0 +1,145 @@
+/* THE ARTHUR HOTHERSALL MEMORIAL GOLFING CHALLENGE - PREMIUM STYLESHEET */
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+/* Core Theme Customizations & Extensions */
+:root {
+    --golf-dark-900: #0b261b;
+    --golf-dark-800: #143c2c;
+    --golf-gold: #C5A059;
+    --golf-gold-light: #DFBE7F;
+    --golf-gold-dark: #9E7B3B;
+    --golf-light: #f4f7f5;
+    --golf-cream: #e4ebe6;
+}
+
+/* Custom Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--golf-dark-900);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--golf-gold);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--golf-gold-light);
+}
+
+/* Base selection color */
+::selection {
+    background-color: var(--golf-gold);
+    color: white;
+}
+
+/* Premium Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes goldPulse {
+    0%, 100% { border-color: rgba(197, 160, 89, 0.4); }
+    50% { border-color: rgba(223, 190, 127, 0.9); }
+}
+
+/* Utilities and Components */
+.page-transition {
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.gold-gradient-bg {
+    background: linear-gradient(135deg, var(--golf-dark-900) 0%, var(--golf-dark-800) 100%);
+}
+
+.gold-gradient-text {
+    background: linear-gradient(135deg, var(--golf-gold) 0%, var(--golf-gold-light) 50%, var(--golf-gold-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gold-border-lux {
+    border: 1px solid transparent;
+    background-image: linear-gradient(white, white), linear-gradient(135deg, var(--golf-gold) 0%, var(--golf-gold-light) 50%, var(--golf-gold-dark) 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+.gold-border-lux-dark {
+    border: 1px solid transparent;
+    background-image: linear-gradient(var(--golf-dark-900), var(--golf-dark-900)), linear-gradient(135deg, var(--golf-gold) 0%, var(--golf-gold-light) 50%, var(--golf-gold-dark) 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+.golf-card-hover {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.golf-card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -10px rgba(11, 38, 27, 0.15);
+    border-color: var(--golf-gold-light);
+}
+
+/* Glassmorphism backing */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(20, 60, 44, 0.08);
+}
+
+.glass-panel-dark {
+    background: rgba(20, 60, 44, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+/* Interactive navigation button styling */
+.nav-link-active {
+    color: var(--golf-gold) !important;
+    border-bottom: 2px solid var(--golf-gold);
+    border-radius: 0px !important;
+}
+
+.nav-link-inactive {
+    color: #cbd5e1 !important; /* text-slate-300 */
+    border-bottom: 2px solid transparent;
+    border-radius: 0px !important;
+}
+
+.nav-link-active-mobile {
+    background-color: var(--golf-dark-900) !important;
+    color: var(--golf-gold) !important;
+    border-left: 3px solid var(--golf-gold);
+}
+
+/* Pulsing premium indicator */
+.premium-pulse {
+    border-width: 1px;
+    animation: goldPulse 3s infinite;
+}
+
+/* Leaderboard highlight */
+.leader-row {
+    background: linear-gradient(to right, rgba(197, 160, 89, 0.08), transparent);
+    font-weight: 600;
+}
+
+/* Fancy numbers */
+.num-serif {
+    font-family: 'Cinzel', serif;
+}
+
+/* Pro and Title styles */
+.font-serif-heading {
+    font-family: 'Cinzel', serif;
+}
+.font-serif-narrative {
+    font-family: 'Playfair Display', Georgia, serif;
+}

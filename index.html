@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Arthur Hothersall Memorial Golfing Challenge</title>
+    
+    <!-- Tailwind CSS for utility styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        golf: {
+                            50: '#f4f7f5',
+                            100: '#e4ebe6',
+                            800: '#143c2c',
+                            900: '#0b261b',
+                            gold: '#C5A059',
+                            goldlight: '#DFBE7F',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Premium Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Lucide Icons for beautiful modern vectors -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Deferred JS files -->
+    <script src="data.js" defer></script>
+    <script src="app.js" defer></script>
+</head>
+<body class="bg-golf-50 text-slate-800 font-sans min-h-full flex flex-col selection:bg-golf-gold selection:text-white">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-golf-900 text-white border-b-2 border-golf-gold sticky top-0 z-50 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo / Title -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('home')">
+                    <div class="bg-golf-gold p-2.5 rounded-full text-golf-900 hover:scale-105 hover:bg-golf-goldlight transition-all duration-300 shadow-md">
+                        <i data-lucide="trophy" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <span class="font-serif-heading text-sm sm:text-lg tracking-wider font-bold block text-golf-gold">THE ARTHUR HOTHERSALL</span>
+                        <span class="text-[10px] tracking-widest uppercase text-slate-300 block -mt-1 font-semibold">Memorial Golfing Challenge</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:flex items-center space-x-1">
+                    <button onclick="navigateTo('home')" id="nav-home" class="px-3.5 py-2 rounded text-sm font-semibold transition-all duration-300 nav-link-active">Home</button>
+                    <button onclick="navigateTo('honour')" id="nav-honour" class="px-3.5 py-2 rounded text-sm font-semibold transition-all duration-300 nav-link-inactive">Roll of Honour</button>
+                    <button onclick="navigateTo('years')" id="nav-years" class="px-3.5 py-2 rounded text-sm font-semibold transition-all duration-300 nav-link-inactive">Yearly Standings</button>
+                    <button onclick="navigateTo('players')" id="nav-players" class="px-3.5 py-2 rounded text-sm font-semibold transition-all duration-300 nav-link-inactive">Player Profiles</button>
+                    <button onclick="navigateTo('admin')" id="nav-admin" class="ml-4 px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-golf-gold text-golf-900 hover:bg-golf-goldlight transition-all duration-300 shadow hover:shadow-lg flex items-center gap-1.5 transform hover:-translate-y-0.5">
+                        <i data-lucide="settings" class="w-3.5 h-3.5"></i> Admin Suite
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-slate-300 hover:text-white focus:outline-none p-2 rounded-md transition-colors" aria-label="Toggle menu">
+                        <i id="menu-icon" data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-golf-800 border-t border-golf-gold/50 px-4 pt-2 pb-4 space-y-1">
+            <button onclick="navigateTo('home'); toggleMobileMenu()" id="nav-home-mobile" class="block w-full text-left px-3 py-2.5 rounded text-base font-medium transition-all nav-link-active-mobile">Home</button>
+            <button onclick="navigateTo('honour'); toggleMobileMenu()" id="nav-honour-mobile" class="block w-full text-left px-3 py-2.5 rounded text-base font-medium transition-all text-slate-300 hover:bg-golf-900 hover:text-white">Roll of Honour</button>
+            <button onclick="navigateTo('years'); toggleMobileMenu()" id="nav-years-mobile" class="block w-full text-left px-3 py-2.5 rounded text-base font-medium transition-all text-slate-300 hover:bg-golf-900 hover:text-white">Yearly Standings</button>
+            <button onclick="navigateTo('players'); toggleMobileMenu()" id="nav-players-mobile" class="block w-full text-left px-3 py-2.5 rounded text-base font-medium transition-all text-slate-300 hover:bg-golf-900 hover:text-white">Player Profiles</button>
+            <button onclick="navigateTo('admin'); toggleMobileMenu()" id="nav-admin-mobile" class="block w-full text-left px-3 py-2.5 rounded text-base font-bold text-golf-gold hover:bg-golf-900 transition-all flex items-center gap-2">
+                <i data-lucide="settings" class="w-4 h-4"></i> Admin Suite
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow">
+
+        <!-- VIEW: Home -->
+        <section id="view-home" class="page-transition">
+            <!-- Hero Banner -->
+            <div class="relative bg-golf-900 text-white py-24 sm:py-32 overflow-hidden bg-cover bg-center" style="background-image: linear-gradient(rgba(11, 38, 27, 0.85), rgba(11, 38, 27, 0.95)), url('https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=1600&q=80')">
+                <div class="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-golf-gold/10 to-transparent pointer-events-none"></div>
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold bg-golf-gold/20 text-golf-goldlight border border-golf-gold/30 mb-6 uppercase tracking-widest premium-pulse">Est. 2007</span>
+                    <h1 class="text-4xl sm:text-6xl font-serif-heading tracking-wider text-white font-bold mb-4">THE ARTHUR HOTHERSALL</h1>
+                    <p class="text-2xl sm:text-3xl font-serif-narrative italic text-golf-gold mb-8">Memorial Golfing Challenge</p>
+                    <div class="w-24 h-1 bg-gradient-to-r from-golf-gold via-golf-goldlight to-golf-gold mx-auto mb-8"></div>
+                    <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-300 leading-relaxed font-light">
+                        Celebrating legacy, integrity, and the enduring spirit of friendly rivalry. An annual golf pilgrimage bringing together friends, brothers, and sons since 2007.
+                    </p>
+                    <div class="mt-10 flex flex-wrap justify-center gap-4">
+                        <button onclick="navigateTo('years')" class="px-7 py-3.5 bg-golf-gold hover:bg-golf-goldlight text-golf-900 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
+                            Explore Standings
+                        </button>
+                        <button onclick="navigateTo('honour')" class="px-7 py-3.5 border-2 border-golf-gold text-golf-gold hover:bg-golf-gold hover:text-golf-900 font-bold rounded-full transition-all duration-300 transform hover:-translate-y-0.5">
+                            View Champions
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Memorial Tribute Section -->
+            <div class="max-w-5xl mx-auto px-4 py-16 sm:py-24">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 rounded-lg bg-gradient-to-r from-golf-gold to-golf-800 opacity-30 blur group-hover:opacity-50 transition duration-1000"></div>
+                        <img src="https://images.unsplash.com/photo-1593111774240-d529f12cf4bb?auto=format&fit=crop&w=800&q=80" alt="Arthur Memorial Tribute" class="relative rounded-lg shadow-2xl w-full h-[400px] object-cover border border-golf-gold/30">
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-serif-heading text-golf-900 font-bold mb-6 flex items-center gap-2">
+                            <i data-lucide="feather" class="text-golf-gold w-8 h-8"></i> In Loving Memory
+                        </h2>
+                        <div class="prose text-slate-600 leading-relaxed space-y-4">
+                            <p class="font-serif-narrative italic text-lg text-golf-800 border-l-4 border-golf-gold pl-4">
+                                "The game of golf is a search for truth, companionship, and the perfect pint at the 19th hole."
+                            </p>
+                            <p>
+                                The Arthur Hothersall Memorial Golfing Challenge was established in 2007 as an annual tribute to a wonderful man whose love for the fairway was only surpassed by his warmth, generosity, and laughter.
+                            </p>
+                            <p>
+                                Every year, eight players assemble to compete for the prestigious Memorial Trophy. Though only one player’s name is engraved on the silver shield each autumn, the real victory lies in the bonds of family, the shared history of wild hooks and spectacular putts, and the memories forged over 36 holes.
+                            </p>
+                        </div>
+                        <div class="mt-8 grid grid-cols-3 gap-4 border-t border-slate-200 pt-8 text-center sm:text-left">
+                            <div>
+                                <span class="block text-3xl font-bold text-golf-800 font-serif-heading num-serif" id="stat-years">19</span>
+                                <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Years Active</span>
+                            </div>
+                            <div>
+                                <span class="block text-3xl font-bold text-golf-800 font-serif-heading num-serif" id="stat-players">8</span>
+                                <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Legends Elite</span>
+                            </div>
+                            <div>
+                                <span class="block text-3xl font-bold text-golf-800 font-serif-heading num-serif" id="stat-courses">12+</span>
+                                <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Venues Conquered</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Summary Grid -->
+            <div class="bg-golf-800 text-white py-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h3 class="text-2xl font-serif-heading text-center text-golf-gold mb-12 uppercase tracking-widest">Tournament Pillars</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-golf-900/50 p-8 rounded-xl border border-golf-gold/20 hover:border-golf-gold transition-all duration-300 text-center shadow-lg transform hover:-translate-y-1">
+                            <i data-lucide="medal" class="w-10 h-10 text-golf-gold mx-auto mb-4"></i>
+                            <h4 class="font-serif-heading text-lg font-bold mb-2 text-golf-goldlight">The Roll of Honour</h4>
+                            <p class="text-sm text-slate-300 leading-relaxed">Tracking every single champion back to the inaugural 2007 classic, recording venues, winning scores, and historic runner-ups.</p>
+                        </div>
+                        <div class="bg-golf-900/50 p-8 rounded-xl border border-golf-gold/20 hover:border-golf-gold transition-all duration-300 text-center shadow-lg transform hover:-translate-y-1">
+                            <i data-lucide="users" class="w-10 h-10 text-golf-gold mx-auto mb-4"></i>
+                            <h4 class="font-serif-heading text-lg font-bold mb-2 text-golf-goldlight">The Contenders</h4>
+                            <p class="text-sm text-slate-300 leading-relaxed">Detailed player biographies, lifetime achievements, unique golf playstyles, individual handicaps, and editable bios.</p>
+                        </div>
+                        <div class="bg-golf-900/50 p-8 rounded-xl border border-golf-gold/20 hover:border-golf-gold transition-all duration-300 text-center shadow-lg transform hover:-translate-y-1">
+                            <i data-lucide="calendar" class="w-10 h-10 text-golf-gold mx-auto mb-4"></i>
+                            <h4 class="font-serif-heading text-lg font-bold mb-2 text-golf-goldlight">Standings & Chronicles</h4>
+                            <p class="text-sm text-slate-300 leading-relaxed">Interactive annual scoring details, photobooks, and written narratives capturing the banter and legendary moments since 2015.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW: Roll of Honour -->
+        <section id="view-honour" class="hidden page-transition py-12">
+            <div class="max-w-5xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <i data-lucide="award" class="w-12 h-12 text-golf-gold mx-auto mb-3"></i>
+                    <h2 class="text-4xl font-serif-heading text-golf-900 font-bold mb-2">The Roll of Honour</h2>
+                    <p class="text-slate-600 font-serif-narrative italic text-lg">"Those who etched their names into the silver, the soil, and golfing immortality."</p>
+                    <div class="w-24 h-0.5 bg-golf-gold mx-auto mt-4"></div>
+                </div>
+
+                <!-- Segmented Toggle -->
+                <div class="flex justify-center mb-8">
+                    <div class="inline-flex p-1 bg-golf-100/50 rounded-xl border border-slate-200 shadow-inner">
+                        <button onclick="switchHonourType('main')" id="honour-toggle-main" class="px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 bg-golf-900 text-golf-gold shadow">
+                            🏆 Memorial Trophy
+                        </button>
+                        <button onclick="switchHonourType('par3')" id="honour-toggle-par3" class="px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 text-slate-500 hover:text-golf-900 hover:bg-white/40">
+                            🎯 Par 3 Challenge
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Roll of Honour Timeline/Table -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-golf-gold/30">
+                    <div class="bg-golf-900 px-6 py-4 border-b border-golf-gold flex items-center justify-between">
+                        <span class="text-white font-serif-heading tracking-wider font-semibold" id="honour-header-title">Champions of the Memorial Trophy</span>
+                        <span class="text-xs uppercase bg-golf-gold text-golf-900 px-3 py-1 rounded-full font-extrabold tracking-widest" id="honour-span-years">2007 - 2025</span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-golf-50 text-golf-900 uppercase text-[10px] tracking-widest font-bold border-b border-slate-200">
+                                    <th class="py-4 px-6">Year</th>
+                                    <th class="py-4 px-6">Champion</th>
+                                    <th class="py-4 px-6">Winning Score</th>
+                                    <th class="py-4 px-6">Venue</th>
+                                    <th class="py-4 px-6">Runner Up</th>
+                                </tr>
+                            </thead>
+                            <tbody id="honour-table-body" class="divide-y divide-slate-100 text-sm">
+                                <!-- Generated Dynamically by app.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW: Yearly Standings -->
+        <section id="view-years" class="hidden page-transition py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl sm:text-4xl font-serif-heading text-golf-900 font-bold mb-2">Yearly Standings & Chronicles</h2>
+                    <p class="text-slate-600">Explore complete tournament results, photobooks, and narrative recaps since 2015.</p>
+                    <div class="w-24 h-0.5 bg-golf-gold mx-auto mt-4"></div>
+                </div>
+
+                <!-- Year Select Tabs -->
+                <div class="flex justify-center flex-wrap gap-2 mb-10" id="years-tab-container">
+                    <!-- Dynamic Tabs loaded by app.js -->
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Left Column: Standings Leaderboard & Chronicles -->
+                    <div class="lg:col-span-2 space-y-8">
+                        <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200">
+                            <div class="bg-golf-900 text-white px-6 py-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-golf-gold">
+                                <div>
+                                    <h3 class="font-serif-heading text-xl text-golf-gold font-bold flex items-center gap-2">
+                                        <i data-lucide="table" class="w-5 h-5"></i> <span id="year-title">2015 Edition</span>
+                                    </h3>
+                                    <p class="text-xs text-slate-300 mt-0.5 flex items-center gap-1">
+                                        <i data-lucide="map-pin" class="w-3.5 h-3.5 text-golf-gold"></i> <span id="year-venue-subtitle">The Brabazon, Belfry</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Yearly Leaderboard Category Toggle -->
+                            <div class="bg-slate-50 border-b border-slate-200 px-6 py-3 flex justify-between items-center gap-4 flex-wrap">
+                                <div class="inline-flex p-0.5 bg-slate-200/60 rounded-lg border border-slate-300 shadow-inner">
+                                    <button onclick="switchYearStandingsCategory('main')" id="year-standings-toggle-main" class="px-4 py-1.5 rounded-md text-[10px] font-extrabold uppercase tracking-wider transition-all duration-300 bg-white text-golf-900 shadow-sm border border-slate-300/40">
+                                        🏆 Memorial Trophy
+                                    </button>
+                                    <button onclick="switchYearStandingsCategory('par3')" id="year-standings-toggle-par3" class="px-4 py-1.5 rounded-md text-[10px] font-extrabold uppercase tracking-wider transition-all duration-300 text-slate-500 hover:text-golf-900">
+                                        🎯 Par 3 Challenge
+                                    </button>
+                                </div>
+                                <span class="bg-golf-gold text-golf-900 text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider shadow-sm" id="year-championship-badge">Stableford Format</span>
+                            </div>
+
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr class="bg-golf-50 text-golf-900 uppercase text-[10px] tracking-widest font-bold border-b border-slate-200" id="standings-table-header">
+                                            <th class="py-4 px-4 text-center w-16">Rank</th>
+                                            <th class="py-4 px-6">Player</th>
+                                            <th class="py-4 px-4 text-center">Round 1</th>
+                                            <th class="py-4 px-4 text-center">Round 2</th>
+                                            <th class="py-4 px-4 text-center bg-golf-100/50 font-black text-golf-800">Total Points</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="standings-table-body" class="divide-y divide-slate-100 text-sm">
+                                        <!-- Dynamic Standings loaded by app.js -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Entertaining Narrative Writeup -->
+                        <div class="bg-white rounded-2xl shadow-lg p-6 border border-slate-200 glass-panel">
+                            <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
+                                <h3 class="font-serif-heading text-lg font-bold text-golf-800 flex items-center gap-2">
+                                    <i data-lucide="scroll" class="text-golf-gold w-5 h-5"></i> Chronicles & Banter
+                                </h3>
+                                <button onclick="editCurrentNarrative()" class="text-xs flex items-center gap-1 bg-golf-50 text-golf-800 border border-golf-gold/30 px-3 py-1.5 rounded-lg hover:bg-golf-gold hover:text-golf-900 hover:border-golf-gold font-semibold transition-all shadow-sm">
+                                    <i data-lucide="edit-3" class="w-3.5 h-3.5"></i> Edit Narrative
+                                </button>
+                            </div>
+                            <div id="year-narrative-box" class="text-slate-600 leading-relaxed space-y-4 font-serif-narrative italic font-light whitespace-pre-line text-base">
+                                <!-- Dynamic Narrative loaded by app.js -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Photos & Event Sidebar -->
+                    <div class="space-y-8">
+                        <!-- Media Vault (Photos & Videos) -->
+                        <div class="bg-white rounded-2xl shadow-lg p-6 border border-slate-200">
+                            <!-- Card Header: Title & Swapper Tabs -->
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-4 mb-4 gap-3">
+                                <div class="inline-flex p-0.5 bg-slate-100 rounded-lg border border-slate-200 shadow-inner">
+                                    <button onclick="switchMediaCategory('photos')" id="media-tab-photos" class="px-3 py-1 rounded-md text-[9px] font-extrabold uppercase tracking-wider transition-all duration-300 bg-white text-golf-900 shadow-sm border border-slate-300/40 flex items-center gap-1">
+                                        <i data-lucide="camera" class="w-3 h-3"></i> Photos
+                                    </button>
+                                    <button onclick="switchMediaCategory('videos')" id="media-tab-videos" class="px-3 py-1 rounded-md text-[9px] font-extrabold uppercase tracking-wider transition-all duration-300 text-slate-500 hover:text-golf-900 flex items-center gap-1">
+                                        <i data-lucide="video" class="w-3 h-3"></i> Videos
+                                    </button>
+                                </div>
+                                <button onclick="triggerAddMediaModal()" id="add-media-btn" class="text-xs flex items-center justify-center gap-1 bg-golf-50 text-golf-800 border border-golf-gold/30 px-3 py-1.5 rounded-lg hover:bg-golf-gold hover:text-golf-900 hover:border-golf-gold font-semibold transition-all shadow-sm">
+                                    <i data-lucide="plus" class="w-3.5 h-3.5"></i> <span id="add-media-btn-text">Add Photo</span>
+                                </button>
+                            </div>
+
+                            <!-- Dynamic Media Grid Container -->
+                            <div class="grid grid-cols-2 gap-3" id="photo-gallery-container">
+                                <!-- Dynamic Media loaded by app.js -->
+                            </div>
+                        </div>
+
+                        <!-- Quick Statistics for Year -->
+                        <div class="bg-golf-800 text-white rounded-2xl shadow-lg p-6 border border-golf-gold/20 glass-panel-dark">
+                            <h3 class="font-serif-heading text-lg font-bold text-golf-gold border-b border-golf-gold/30 pb-3 mb-4 flex items-center gap-2">
+                                <i data-lucide="award" class="w-5 h-5 text-golf-gold"></i> Edition Awards
+                            </h3>
+                            <ul class="space-y-4 text-sm" id="year-stat-highlights">
+                                <!-- Dynamic highlights generated by app.js -->
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW: Player Profiles -->
+        <section id="view-players" class="hidden page-transition py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <i data-lucide="users" class="w-12 h-12 text-golf-gold mx-auto mb-3"></i>
+                    <h2 class="text-4xl font-serif-heading text-golf-900 font-bold mb-2">The Elite Contenders</h2>
+                    <p class="text-slate-600 font-serif-narrative italic text-lg">"The eight legends whose loyalty, skills, and laughter keep the memorial flame alive."</p>
+                    <div class="w-24 h-0.5 bg-golf-gold mx-auto mt-4"></div>
+                </div>
+
+                <!-- Player Profiles Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="player-profile-grid">
+                    <!-- Loaded dynamically with player cards by app.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW: Admin Suite -->
+        <section id="view-admin" class="hidden page-transition py-12 bg-golf-50">
+            <div class="max-w-5xl mx-auto px-4">
+                <div class="bg-white rounded-2xl shadow-xl p-8 border border-golf-gold/30">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-200 pb-6 mb-8 gap-4">
+                        <div>
+                            <h2 class="text-3xl font-serif-heading text-golf-900 font-bold flex items-center gap-2">
+                                <i data-lucide="sliders" class="text-golf-gold w-8 h-8"></i> Admin Control Suite
+                            </h2>
+                            <p class="text-sm text-slate-500 mt-1">Directly update backing storage, tournament standings, and backup records</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="exportData()" class="px-4 py-2.5 bg-golf-800 text-white hover:bg-golf-900 font-bold text-xs rounded-lg shadow-md uppercase tracking-wider flex items-center gap-1.5 transition-all transform hover:-translate-y-0.5">
+                                <i data-lucide="download" class="w-4 h-4"></i> Export Data
+                            </button>
+                            <button onclick="triggerImport()" class="px-4 py-2.5 bg-golf-gold hover:bg-golf-goldlight text-golf-900 font-bold text-xs rounded-lg shadow-md uppercase tracking-wider flex items-center gap-1.5 transition-all transform hover:-translate-y-0.5">
+                                <i data-lucide="upload" class="w-4 h-4"></i> Import Data
+                            </button>
+                            <input type="file" id="import-file" class="hidden" accept=".json" onchange="importData(event)">
+                        </div>
+                    </div>
+
+                    <!-- Options Selector -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Card 1: Manage Yearly Standings -->
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 hover:border-golf-gold hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                            <div>
+                                <i data-lucide="calendar-plus" class="w-8 h-8 text-golf-gold mb-3"></i>
+                                <h3 class="font-serif-heading text-lg font-bold text-golf-900 mb-2">Yearly Edition Manager</h3>
+                                <p class="text-xs text-slate-500 mb-6 leading-relaxed">Add a new tournament edition, adjust player scorecards, or correct venue details instantly.</p>
+                            </div>
+                            <button onclick="triggerAddYearModal()" class="w-full py-2.5 bg-golf-800 text-white font-bold text-xs rounded-lg hover:bg-golf-900 transition-colors uppercase tracking-widest">
+                                Manage Editions
+                            </button>
+                        </div>
+
+                        <!-- Card 2: Edit Roll of Honour -->
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 hover:border-golf-gold hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                            <div>
+                                <i data-lucide="award" class="w-8 h-8 text-golf-gold mb-3"></i>
+                                <h3 class="font-serif-heading text-lg font-bold text-golf-900 mb-2">Roll of Honour Editor</h3>
+                                <p class="text-xs text-slate-500 mb-6 leading-relaxed">Correct historical champion entries back to 2007. Make retro adjustments to courses or winning points.</p>
+                            </div>
+                            <button onclick="triggerRollEditorModal()" class="w-full py-2.5 bg-golf-800 text-white font-bold text-xs rounded-lg hover:bg-golf-900 transition-colors uppercase tracking-widest">
+                                Edit Roll of Honour
+                            </button>
+                        </div>
+
+                        <!-- Card 3: Reset Website Data -->
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 hover:border-red-500 hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                            <div>
+                                <i data-lucide="refresh-cw" class="w-8 h-8 text-red-500 mb-3"></i>
+                                <h3 class="font-serif-heading text-lg font-bold text-golf-900 mb-2">Factory Database Reset</h3>
+                                <p class="text-xs text-slate-500 mb-6 leading-relaxed">Revert all local modifications and restore the pristine factory-default scores, players, and standings.</p>
+                            </div>
+                            <button onclick="resetToFactory()" class="w-full py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-lg transition-colors uppercase tracking-widest">
+                                Reset Database
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Host Explanation Card -->
+                    <div class="mt-8 p-5 bg-golf-100 rounded-lg text-xs text-golf-900 leading-relaxed border-l-4 border-golf-gold flex items-start gap-3 shadow-inner">
+                        <i data-lucide="info" class="w-5 h-5 text-golf-gold flex-shrink-0 mt-0.5"></i>
+                        <div>
+                            <strong class="block text-sm font-serif-heading font-bold mb-1 text-golf-900">How is website data maintained?</strong>
+                            All updates you apply in this suite, or via editing pencils on other tabs, are immediately synced directly to your current browser's local memory. To safely transfer your edits across different machines, or to preserve them against accidental browser cache wipes, click <strong class="underline">Export Data</strong> to download a backup file. You can load this backup on any device using the <strong class="underline">Import Data</strong> button.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-golf-900 text-white py-12 border-t-2 border-golf-gold">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="font-serif-heading text-golf-gold tracking-widest text-lg font-semibold mb-2">THE ARTHUR HOTHERSALL MEMORIAL CHALLENGE</p>
+            <p class="text-xs text-slate-300 max-w-md mx-auto mb-6 leading-relaxed">Honoring history, classic swings, and unforgettable camaraderie on the greens since 2007.</p>
+            <p class="text-[10px] text-slate-500">&copy; <span id="current-year-placeholder">2026</span> Arthur Hothersall Memorial. Built elegantly with legacy, integrity, and pure golf pedigree.</p>
+        </div>
+    </footer>
+
+    <!-- MODALS & DIALOGS -->
+
+    <!-- Modal: Edit Narrative -->
+    <div id="modal-narrative" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden border border-golf-gold page-transition">
+            <div class="bg-golf-900 text-white px-6 py-4 border-b border-golf-gold flex items-center justify-between">
+                <h3 class="font-serif-heading text-lg text-golf-gold font-bold flex items-center gap-2">
+                    <i data-lucide="edit-3" class="w-5 h-5"></i> Edit Edition Chronicles
+                </h3>
+                <button onclick="closeModal('modal-narrative')" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <div class="p-6 space-y-4">
+                <p class="text-xs text-slate-500">Inject some humor, society banter, or correct the details of this edition's tournament play. Line breaks and double spacing are preserved.</p>
+                <textarea id="edit-narrative-text" rows="10" class="w-full border border-slate-300 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-golf-gold text-slate-700 font-sans"></textarea>
+            </div>
+            <div class="bg-slate-50 px-6 py-3 flex justify-end gap-2 border-t border-slate-100">
+                <button onclick="closeModal('modal-narrative')" class="px-4 py-2 border border-slate-300 rounded-lg text-xs font-semibold hover:bg-slate-100 transition-colors">Cancel</button>
+                <button onclick="saveNarrative()" class="px-4 py-2 bg-golf-800 hover:bg-golf-900 text-white rounded-lg text-xs font-semibold transition-colors shadow">Save Chronicles</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Add Photo -->
+    <div id="modal-photo" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md overflow-hidden border border-golf-gold page-transition">
+            <div class="bg-golf-900 text-white px-6 py-4 border-b border-golf-gold flex items-center justify-between">
+                <h3 class="font-serif-heading text-lg text-golf-gold font-bold flex items-center gap-2">
+                    <i data-lucide="image-plus" class="w-5 h-5"></i> Insert Photo Highlight
+                </h3>
+                <button onclick="closeModal('modal-photo')" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <div class="p-6 space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Image URL</label>
+                    <input type="text" id="photo-url-input" placeholder="e.g. https://images.unsplash.com/..." class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-golf-gold text-slate-700">
+                    <p class="text-[10px] text-slate-400 mt-2 leading-relaxed">Paste any public web image address. To use premium golf backgrounds, copy a link from websites like Unsplash or Pexels.</p>
+                </div>
+            </div>
+            <div class="bg-slate-50 px-6 py-3 flex justify-end gap-2 border-t border-slate-100">
+                <button onclick="closeModal('modal-photo')" class="px-4 py-2 border border-slate-300 rounded-lg text-xs font-semibold hover:bg-slate-100 transition-colors">Cancel</button>
+                <button onclick="savePhoto()" class="px-4 py-2 bg-golf-800 hover:bg-golf-900 text-white rounded-lg text-xs font-semibold transition-colors shadow">Insert Photo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Add Video -->
+    <div id="modal-video" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md overflow-hidden border border-golf-gold page-transition">
+            <div class="bg-golf-900 text-white px-6 py-4 border-b border-golf-gold flex items-center justify-between">
+                <h3 class="font-serif-heading text-lg text-golf-gold font-bold flex items-center gap-2">
+                    <i data-lucide="video" class="w-5 h-5"></i> Insert Video Highlight
+                </h3>
+                <button onclick="closeModal('modal-video')" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <div class="p-6 space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Video URL (MP4 Format)</label>
+                    <input type="text" id="video-url-input" placeholder="e.g. https://assets.mixkit.co/...mp4" class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-golf-gold text-slate-700">
+                    <p class="text-[10px] text-slate-400 mt-2 leading-relaxed">Paste a direct web link to any MP4 video clip. Direct streaming files (like those from mixkit.co, pexels.com, or your own hosting) will play directly in our premium players.</p>
+                </div>
+            </div>
+            <div class="bg-slate-50 px-6 py-3 flex justify-end gap-2 border-t border-slate-100">
+                <button onclick="closeModal('modal-video')" class="px-4 py-2 border border-slate-300 rounded-lg text-xs font-semibold hover:bg-slate-100 transition-colors">Cancel</button>
+                <button onclick="saveVideo()" class="px-4 py-2 bg-golf-800 hover:bg-golf-900 text-white rounded-lg text-xs font-semibold transition-colors shadow">Insert Video</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Edit Standings / Add Year -->
+    <div id="modal-edit-year" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-3xl overflow-hidden border border-golf-gold my-8 page-transition">
+            <div class="bg-golf-900 text-white px-6 py-4 border-b border-golf-gold flex items-center justify-between">
+                <h3 class="font-serif-heading text-lg text-golf-gold font-bold flex items-center gap-2" id="year-editor-title">
+                    <i data-lucide="calendar" class="w-5 h-5"></i> Edit Edition Details
+                </h3>
+                <button onclick="closeModal('modal-edit-year')" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <div class="p-6 space-y-6 max-h-[65vh] overflow-y-auto">
+                
+                <!-- Base Info -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Tournament Year</label>
+                        <input type="number" id="edit-year-val" placeholder="e.g. 2026" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-golf-gold focus:outline-none">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Course Venue</label>
+                        <input type="text" id="edit-year-venue" placeholder="e.g. St Andrews, Old Course" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-golf-gold focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Rounds Played</label>
+                        <select id="edit-year-rounds-count" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-golf-gold focus:outline-none" onchange="updateRoundsCountDropdown()">
+                            <option value="1">1 Round</option>
+                            <option value="2">2 Rounds</option>
+                            <option value="3">3 Rounds</option>
+                            <option value="4">4 Rounds</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Scores Grid for 8 Players -->
+                <div>
+                    <h4 class="font-serif-heading text-sm font-bold text-golf-900 border-b border-slate-200 pb-2 mb-4">Player Scores & Placements</h4>
+                    <div class="space-y-3" id="edit-scores-grid">
+                        <!-- Loaded dynamically by app.js -->
+                    </div>
+                </div>
+
+            </div>
+            <div class="bg-slate-50 px-6 py-4 flex justify-between items-center border-t border-slate-100">
+                <button onclick="deleteYear()" id="delete-year-btn" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-semibold transition-colors flex items-center gap-1 shadow">
+                    <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Delete Edition
+                </button>
+                <div class="flex gap-2">
+                    <button onclick="closeModal('modal-edit-year')" class="px-4 py-2 border border-slate-300 rounded-lg text-xs font-semibold hover:bg-slate-100 transition-colors">Cancel</button>
+                    <button onclick="saveYearData()" class="px-4 py-2 bg-golf-800 hover:bg-golf-900 text-white rounded-lg text-xs font-semibold transition-colors shadow">Save Edition</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Roll of Honour Editor -->
+    <div id="modal-roll-editor" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-3xl overflow-hidden border border-golf-gold my-8 page-transition">
+            <div class="bg-golf-900 text-white px-6 py-4 border-b border-golf-gold flex items-center justify-between">
+                <h3 class="font-serif-heading text-lg text-golf-gold font-bold flex items-center gap-2">
+                    <i data-lucide="award" class="w-5 h-5"></i> Roll of Honour Master Editor
+                </h3>
+                <button onclick="closeModal('modal-roll-editor')" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <div class="p-6 max-h-[65vh] overflow-y-auto space-y-4">
+                <div class="flex items-center justify-between bg-slate-50 p-4 rounded-xl border border-slate-200 gap-4">
+                    <span class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="sliders" class="w-4 h-4 text-golf-gold"></i> Choose Category:</span>
+                    <select id="roll-editor-category" class="border border-slate-300 rounded-lg px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-golf-gold text-slate-800 bg-white" onchange="updateRollEditorCategory()">
+                        <option value="main">🏆 Memorial Trophy</option>
+                        <option value="par3">🎯 Par 3 Challenge</option>
+                    </select>
+                </div>
+                
+                <p class="text-xs text-slate-500 leading-relaxed">Edit any historical winning entry. To add a new champion, fill in the fields of the **[NEW RECORD]** entry at the top of the list.</p>
+                
+                <div class="space-y-4" id="roll-editor-list">
+                    <!-- Loaded dynamically by app.js -->
+                </div>
+            </div>
+            <div class="bg-slate-50 px-6 py-3 flex justify-end gap-2 border-t border-slate-100">
+                <button onclick="closeModal('modal-roll-editor')" class="px-4 py-2 border border-slate-300 rounded-lg text-xs font-semibold hover:bg-slate-100 transition-colors">Cancel</button>
+                <button onclick="saveRollEntries()" class="px-4 py-2 bg-golf-800 hover:bg-golf-900 text-white rounded-lg text-xs font-semibold transition-colors shadow">Commit Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Player Detail & Bio Editor -->
+    <div id="modal-player-detail" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden border border-golf-gold page-transition">
+            <div class="bg-golf-900 text-white px-6 py-4 border-b border-golf-gold flex items-center justify-between">
+                <h3 class="font-serif-heading text-lg text-golf-gold font-bold flex items-center gap-2">
+                    <i data-lucide="user" class="w-5 h-5"></i> Edit Contender Profile
+                </h3>
+                <button onclick="closeModal('modal-player-detail')" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <div class="p-6 space-y-4">
+                <div class="flex items-center gap-4">
+                    <img id="edit-p-avatar" class="w-16 h-16 rounded-full object-cover border-2 border-golf-gold shadow-md" src="" alt="Avatar Preview">
+                    <div class="flex-grow">
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Avatar Image URL</label>
+                        <input type="text" id="edit-p-avatar-url" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-golf-gold focus:outline-none">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Full Name</label>
+                        <input type="text" id="edit-p-name" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-golf-gold focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Moniker / Nickname</label>
+                        <input type="text" id="edit-p-nickname" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-golf-gold focus:outline-none">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Official Handicap</label>
+                        <input type="number" id="edit-p-handicap" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-golf-gold focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Inaugural Year</label>
+                        <input type="number" id="edit-p-joined" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-golf-gold focus:outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Biography & Golfing Style</label>
+                    <textarea id="edit-p-bio" rows="4" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs focus:ring-2 focus:ring-golf-gold focus:outline-none text-slate-700 font-sans leading-relaxed"></textarea>
+                </div>
+            </div>
+            <div class="bg-slate-50 px-6 py-3 flex justify-end gap-2 border-t border-slate-100">
+                <button onclick="closeModal('modal-player-detail')" class="px-4 py-2 border border-slate-300 rounded-lg text-xs font-semibold hover:bg-slate-100 transition-colors">Cancel</button>
+                <button onclick="savePlayerProfile()" class="px-4 py-2 bg-golf-800 hover:bg-golf-900 text-white rounded-lg text-xs font-semibold transition-colors shadow">Save Profile</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Player Showcase Detail Card -->
+    <div id="modal-player-showcase" class="fixed inset-0 bg-black/75 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden border border-golf-gold page-transition flex flex-col my-8">
+            
+            <!-- Modal Header banner -->
+            <div class="relative h-44 bg-gradient-to-r from-golf-900 via-golf-950 to-golf-900 border-b border-golf-gold/30">
+                <button onclick="closeModal('modal-player-showcase')" class="absolute top-4 right-4 p-2 bg-black/40 text-white hover:bg-red-500 hover:text-white rounded-full transition-colors z-20" title="Close Modal">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+                <div class="absolute -bottom-12 left-8 flex items-end gap-5">
+                    <img id="showcase-avatar" class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-xl bg-slate-100" src="" alt="">
+                    <div class="pb-2">
+                        <h2 id="showcase-name" class="font-serif-heading text-2xl font-bold text-white drop-shadow-md"></h2>
+                        <p id="showcase-nickname" class="text-xs font-serif-narrative italic text-golf-gold font-bold drop-shadow-sm -mt-0.5"></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Modal Scrollable Content -->
+            <div class="p-8 pt-16 overflow-y-auto max-h-[60vh] space-y-6">
+                
+                <!-- Quick Info stats -->
+                <div class="grid grid-cols-4 gap-3">
+                    <div class="bg-slate-50 border border-slate-100 rounded-xl p-3 text-center shadow-sm">
+                        <span class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider block">Handicap</span>
+                        <span id="showcase-handicap" class="font-serif-heading font-black text-golf-900 text-lg leading-snug"></span>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-100 rounded-xl p-3 text-center shadow-sm">
+                        <span class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider block">Joined</span>
+                        <span id="showcase-joined" class="font-serif-heading font-black text-slate-700 text-lg leading-snug"></span>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-100 rounded-xl p-3 text-center shadow-sm">
+                        <span class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider block">Trophy Wins</span>
+                        <span id="showcase-wins" class="font-serif-heading font-black text-golf-gold-dark text-lg leading-snug flex items-center justify-center gap-0.5"></span>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-100 rounded-xl p-3 text-center shadow-sm">
+                        <span class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider block">Par 3 Wins</span>
+                        <span id="showcase-par3-wins" class="font-serif-heading font-black text-amber-600 text-lg leading-snug flex items-center justify-center gap-0.5"></span>
+                    </div>
+                </div>
+                
+                <!-- Biography Section -->
+                <div>
+                    <h4 class="text-xs font-bold text-golf-900 uppercase tracking-wider border-l-3 border-golf-gold pl-2 mb-2.5">Biography</h4>
+                    <p id="showcase-bio" class="text-slate-600 text-sm font-light leading-relaxed text-justify px-2"></p>
+                </div>
+                
+                <!-- Amusing David Brent Style Commentary -->
+                <div class="bg-gradient-to-br from-amber-50/50 to-golf-50/20 border border-golf-gold/20 rounded-2xl p-5 relative overflow-hidden">
+                    <div class="absolute -right-3 -bottom-5 text-golf-gold/10 font-serif font-black text-8xl pointer-events-none">“</div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="message-square" class="w-4 h-4 text-golf-gold-dark"></i>
+                        <h4 class="text-xs font-bold text-golf-gold-dark uppercase tracking-wider">Brent's Office Chronicle</h4>
+                    </div>
+                    <p id="showcase-commentary" class="text-slate-700 text-sm italic font-serif-narrative leading-relaxed px-2 font-light"></p>
+                    <div class="text-[10px] text-slate-400 font-medium mt-3 text-right">- David Brent, Arthur Memorial Correspondent</div>
+                </div>
+                
+                <!-- Historical Performance Records -->
+                <div>
+                    <h4 class="text-xs font-bold text-golf-900 uppercase tracking-wider border-l-3 border-golf-gold pl-2 mb-3">Arthur Memorial Career Record</h4>
+                    <div class="border border-slate-100 rounded-xl overflow-hidden shadow-sm">
+                        <table class="w-full text-xs text-left">
+                            <thead class="bg-slate-50 text-slate-500 font-semibold uppercase tracking-wider border-b border-slate-100">
+                                <tr>
+                                    <th class="py-2.5 px-4">Year</th>
+                                    <th class="py-2.5 px-4">Venue</th>
+                                    <th class="py-2.5 px-4 text-center">Memorial Trophy</th>
+                                    <th class="py-2.5 px-4 text-center">Par 3 Challenge</th>
+                                </tr>
+                            </thead>
+                            <tbody id="showcase-history-body" class="divide-y divide-slate-100 font-medium text-slate-700">
+                                <!-- Loaded dynamically in app.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- Footer controls -->
+            <div class="bg-slate-50 px-6 py-4 flex justify-end gap-2 border-t border-slate-100">
+                <button onclick="closeModal('modal-player-showcase')" class="px-5 py-2 bg-golf-900 hover:bg-golf-950 text-white rounded-lg text-xs font-semibold transition-colors shadow">Close Window</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- UI Message Alert Box (Toast) -->
+    <div id="ui-alert" class="fixed bottom-6 right-6 bg-slate-900 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3 transition-all duration-300 transform translate-y-36 opacity-0 z-50 border border-golf-gold/50">
+        <div class="bg-golf-gold p-1.5 rounded-full text-golf-900" id="ui-alert-icon-container">
+            <i data-lucide="check" class="w-4 h-4"></i>
+        </div>
+        <div>
+            <span class="text-xs font-bold tracking-wide block" id="ui-alert-msg">Profile updated successfully!</span>
+        </div>
+    </div>
+
+</body>
+</html>
