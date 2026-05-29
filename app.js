@@ -122,13 +122,16 @@ function loadState() {
                 saveToLocalStorage();
             }
             
-            // Self-correction check: if loaded state uses Unsplash avatars for players while FACTORY_DATA has local files (stale cache)
+            // Self-correction check: if loaded player avatars differ from FACTORY_DATA avatars (e.g. stale Unsplash placeholders or wrong casing)
             let needsAvatarSync = false;
             if (state.players && FACTORY_DATA.players) {
-                const loadedHasUnsplash = state.players.some(p => p.avatar && p.avatar.includes("unsplash.com"));
-                const factoryHasLocal = FACTORY_DATA.players.some(p => p.avatar && p.avatar.startsWith("images/"));
-                if (loadedHasUnsplash && factoryHasLocal) {
-                    needsAvatarSync = true;
+                for (let i = 0; i < FACTORY_DATA.players.length; i++) {
+                    const fPlayer = FACTORY_DATA.players[i];
+                    const lPlayer = state.players.find(p => p.id === fPlayer.id);
+                    if (lPlayer && lPlayer.avatar !== fPlayer.avatar) {
+                        needsAvatarSync = true;
+                        break;
+                    }
                 }
             }
             if (needsAvatarSync) {

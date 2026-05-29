@@ -6,7 +6,7 @@ const FACTORY_DATA = {
       "nickname": "The European Master",
       "bio": "Incredibly consistent under pressure. Plays a precision-based game with soft irons and has conquering consistency across Spain and Portugal fairways.",
       "handicap": 18,
-      "avatar": "images/fergus.jpg",
+      "avatar": "images/Fergus.jpg",
       "joined": 2015
     },
     {
@@ -15,7 +15,7 @@ const FACTORY_DATA = {
       "nickname": "Steady Hand",
       "bio": "A classic golfer with an exceptionally repetitive backswing. Prefers straight, clean fairways and excels at chipping onto fast greens.",
       "handicap": 18,
-      "avatar": "images/richard.jpg",
+      "avatar": "images/Richard.jpg",
       "joined": 2015
     },
     {
@@ -24,7 +24,7 @@ const FACTORY_DATA = {
       "nickname": "Palmares Puncher",
       "bio": "Strong driving power, particularly legendary for a stunning 38-point round at Palmares in 2023. Plays with deep passion.",
       "handicap": 18,
-      "avatar": "images/paul.jpg",
+      "avatar": "images/Paul.jpg",
       "joined": 2015
     },
     {
@@ -42,7 +42,7 @@ const FACTORY_DATA = {
       "nickname": "Fairway Diplomat",
       "bio": "Known for unparalleled sportsmanship and hilarious post-round clubhouse banter. Always keeps his head cool in tricky lies.",
       "handicap": 18,
-      "avatar": "images/steve.jpg",
+      "avatar": "images/Steve.jpg",
       "joined": 2015
     },
     {
@@ -51,7 +51,7 @@ const FACTORY_DATA = {
       "nickname": "The Wokefield Wizard",
       "bio": "A strategic iron player who thrives on tough UK layouts, carding a legendary 36 points in Round 1 of Wokefield Park.",
       "handicap": 18,
-      "avatar": "images/mark.jpg",
+      "avatar": "images/Mark.jpg",
       "joined": 2015
     },
     {
@@ -60,7 +60,7 @@ const FACTORY_DATA = {
       "nickname": "The Bird Hills Bomber",
       "bio": "Carded a blistering 35 points in both rounds of Bird Hills 2020. Plays with a long draw and superb composure.",
       "handicap": 18,
-      "avatar": "images/nick.jpg",
+      "avatar": "images/Nick.jpg",
       "joined": 2016
     },
     {
