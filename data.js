@@ -6,7 +6,7 @@ const FACTORY_DATA = {
       "nickname": "The European Master",
       "bio": "Incredibly consistent under pressure. Plays a precision-based game with soft irons and has conquering consistency across Spain and Portugal fairways.",
       "handicap": 18,
-      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&h=300&q=80",
+      "avatar": "images/fergus.jpg",
       "joined": 2015
     },
     {
@@ -15,7 +15,7 @@ const FACTORY_DATA = {
       "nickname": "Steady Hand",
       "bio": "A classic golfer with an exceptionally repetitive backswing. Prefers straight, clean fairways and excels at chipping onto fast greens.",
       "handicap": 18,
-      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&h=300&q=80",
+      "avatar": "images/richard.jpg",
       "joined": 2015
     },
     {
@@ -24,7 +24,7 @@ const FACTORY_DATA = {
       "nickname": "Palmares Puncher",
       "bio": "Strong driving power, particularly legendary for a stunning 38-point round at Palmares in 2023. Plays with deep passion.",
       "handicap": 18,
-      "avatar": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&h=300&q=80",
+      "avatar": "images/paul.jpg",
       "joined": 2015
     },
     {
@@ -33,7 +33,7 @@ const FACTORY_DATA = {
       "nickname": "The Pine Ridge Bandit",
       "bio": "Known for standard-breaking high rounds, especially an outstanding 37 points at Pine Ridge in 2018. Very formidable competitor.",
       "handicap": 18,
-      "avatar": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&h=300&q=80",
+      "avatar": "images/Chris.jpeg",
       "joined": 2015
     },
     {
@@ -42,7 +42,7 @@ const FACTORY_DATA = {
       "nickname": "Fairway Diplomat",
       "bio": "Known for unparalleled sportsmanship and hilarious post-round clubhouse banter. Always keeps his head cool in tricky lies.",
       "handicap": 18,
-      "avatar": "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&w=300&h=300&q=80",
+      "avatar": "images/steve.jpg",
       "joined": 2015
     },
     {
@@ -51,7 +51,7 @@ const FACTORY_DATA = {
       "nickname": "The Wokefield Wizard",
       "bio": "A strategic iron player who thrives on tough UK layouts, carding a legendary 36 points in Round 1 of Wokefield Park.",
       "handicap": 18,
-      "avatar": "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=300&h=300&q=80",
+      "avatar": "images/mark.jpg",
       "joined": 2015
     },
     {
@@ -60,7 +60,7 @@ const FACTORY_DATA = {
       "nickname": "The Bird Hills Bomber",
       "bio": "Carded a blistering 35 points in both rounds of Bird Hills 2020. Plays with a long draw and superb composure.",
       "handicap": 18,
-      "avatar": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=300&h=300&q=80",
+      "avatar": "images/nick.jpg",
       "joined": 2016
     },
     {
@@ -69,166 +69,87 @@ const FACTORY_DATA = {
       "nickname": "The Spain Sovereign",
       "bio": "Possesses a highly resilient links playstyle, performing at a high level on the windy Los Arqueros and Marbella layouts.",
       "handicap": 18,
-      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&h=300&q=80",
+      "avatar": "images/Stu.jpeg",
       "joined": 2016
     }
   ],
   "rollOfHonour": [
     {
-      "year": 2015,
-      "venue": "Spain (La Cala Campo Europa, Alhaurin, Parador Malaga)",
-      "winner": "Fergus",
-      "score": "83 pts",
-      "runnerUp": "Chris"
-    },
-    {
-      "year": 2016,
-      "venue": "Spain (Marbella Golf Club, Cabopino, Los Arqueros)",
-      "winner": "Richard & Chris & Fergus",
-      "score": "66 pts",
-      "runnerUp": "Paul"
-    },
-    {
-      "year": 2017,
-      "venue": "UK (OLD THORNS - UK)",
-      "winner": "Nick",
-      "score": "48 pts",
-      "runnerUp": "Richard"
-    },
-    {
-      "year": 2018,
-      "venue": "Reading (Pine Ridge, Reading GC, Bird Hills)",
-      "winner": "Fergus",
-      "score": "88 pts",
-      "runnerUp": "Nick"
-    },
-    {
-      "year": 2019,
-      "venue": "Portugal (Not Specified)",
-      "winner": "Mark",
-      "score": "75 pts",
-      "runnerUp": "Chris"
-    },
-    {
-      "year": 2020,
-      "venue": "Reading (Bird Hills)",
-      "winner": "Nick",
-      "score": "69 pts",
-      "runnerUp": "Mark"
-    },
-    {
-      "year": 2021,
-      "venue": "Reading (WOKEFIELD PARK - Reading)",
-      "winner": "Paul",
-      "score": "65 pts",
-      "runnerUp": "Mark"
-    },
-    {
-      "year": 2022,
-      "venue": "Spain (EUROPE, ASIA, AMERICA)",
-      "winner": "Fergus",
-      "score": "86 pts",
-      "runnerUp": "Richard"
-    },
-    {
-      "year": 2023,
-      "venue": "PORTUGAL - Lagos (Espiche Golf, Boavista Golf, Palmares - Praia & Alvor)",
-      "winner": "Paul",
-      "score": "88 pts",
-      "runnerUp": "Nick"
-    },
-    {
-      "year": 2024,
-      "venue": "Portugal - PESTANA (Vale da Pinta, Gramacho)",
-      "winner": "Fergus",
-      "score": "71 pts",
-      "runnerUp": "Richard"
-    },
-    {
       "year": 2025,
-      "venue": "PORTUGAL - Praia D'el Rey (Royal Obidos, West Cliffs)",
       "winner": "Nick",
       "score": "51 pts",
-      "runnerUp": "Fergus"
-    }
-  ],
-  "par3RollOfHonour": [
-    {
-      "year": 2015,
-      "venue": "Spain (La Cala Campo Europa, Alhaurin, Parador Malaga)",
-      "winner": "Fergus & Paul",
-      "score": "22 pts",
-      "runnerUp": "Chris"
-    },
-    {
-      "year": 2016,
-      "venue": "Spain (Marbella Golf Club, Cabopino, Los Arqueros)",
-      "winner": "Paul",
-      "score": "19 pts",
-      "runnerUp": "Chris"
-    },
-    {
-      "year": 2017,
-      "venue": "UK (OLD THORNS - UK)",
-      "winner": "Paul",
-      "score": "14 pts",
-      "runnerUp": "Mark"
-    },
-    {
-      "year": 2018,
-      "venue": "Reading (Pine Ridge, Reading GC, Bird Hills)",
-      "winner": "Mark",
-      "score": "25 pts",
-      "runnerUp": "Paul"
-    },
-    {
-      "year": 2019,
-      "venue": "Portugal (Not Specified)",
-      "winner": "Mark",
-      "score": "25 pts",
-      "runnerUp": "Chris"
-    },
-    {
-      "year": 2020,
-      "venue": "Reading (Bird Hills)",
-      "winner": "Fergus",
-      "score": "16 pts",
-      "runnerUp": "Mark"
-    },
-    {
-      "year": 2021,
-      "venue": "Reading (WOKEFIELD PARK - Reading)",
-      "winner": "Fergus",
-      "score": "18 pts",
-      "runnerUp": "Paul"
-    },
-    {
-      "year": 2022,
-      "venue": "Spain (EUROPE, ASIA, AMERICA)",
-      "winner": "Mark",
-      "score": "27 pts",
-      "runnerUp": "Richard"
-    },
-    {
-      "year": 2023,
-      "venue": "PORTUGAL - Lagos (Espiche Golf, Boavista Golf, Palmares - Praia & Alvor)",
-      "winner": "Paul",
-      "score": "31 pts",
-      "runnerUp": "Chris"
+      "runnerUp": "Fergus",
+      "venue": "PORTUGAL - Praia D'el Rey (Royal Obidos, West Cliffs)"
     },
     {
       "year": 2024,
-      "venue": "Portugal - PESTANA (Vale da Pinta, Gramacho)",
-      "winner": "Mark",
-      "score": "10 pts",
-      "runnerUp": "Richard"
+      "winner": "Fergus",
+      "score": "71 pts",
+      "runnerUp": "Richard",
+      "venue": "Portugal - PESTANA (Vale da Pinta, Gramacho)"
     },
     {
-      "year": 2025,
-      "venue": "PORTUGAL - Praia D'el Rey (Royal Obidos, West Cliffs)",
+      "year": 2023,
+      "winner": "Paul",
+      "score": "88 pts",
+      "runnerUp": "Nick",
+      "venue": "PORTUGAL - Lagos (Espiche Golf, Boavista Golf, Palmares - Praia & Alvor)"
+    },
+    {
+      "year": 2022,
+      "winner": "Fergus",
+      "score": "86 pts",
+      "runnerUp": "Richard",
+      "venue": "Spain (EUROPE, ASIA, AMERICA)"
+    },
+    {
+      "year": 2021,
+      "winner": "Paul",
+      "score": "65 pts",
+      "runnerUp": "Mark",
+      "venue": "Reading (WOKEFIELD PARK - Reading)"
+    },
+    {
+      "year": 2020,
       "winner": "Nick",
-      "score": "20 pts",
-      "runnerUp": "Paul"
+      "score": "69 pts",
+      "runnerUp": "Mark",
+      "venue": "Reading (Bird Hills)"
+    },
+    {
+      "year": 2019,
+      "winner": "Mark",
+      "score": "75 pts",
+      "runnerUp": "Chris",
+      "venue": "Portugal (Not Specified)"
+    },
+    {
+      "year": 2018,
+      "winner": "Fergus",
+      "score": "88 pts",
+      "runnerUp": "Nick",
+      "venue": "Reading (Pine Ridge, Reading GC, Bird Hills)"
+    },
+    {
+      "year": 2017,
+      "winner": "Nick",
+      "score": "48 pts",
+      "runnerUp": "Richard",
+      "venue": "UK (OLD THORNS - UK)"
+    },
+    {
+      "year": 2016,
+      "winner": "Richard",
+      "score": "66 pts",
+      "runnerUp": "Chris",
+      "venue": "Spain (Marbella Golf Club, Cabopino, Los Arqueros)"
+    },
+    {
+      "year": 2015,
+      "winner": "Fergus",
+      "score": "83 pts",
+      "runnerUp": "Chris",
+      "venue": "Spain (La Cala Campo Europa, Alhaurin, Parador Malaga)"
     }
   ],
   "years": {
@@ -333,18 +254,17 @@ const FACTORY_DATA = {
           "par3Total": 19
         }
       ],
-      "videos": [
-        "https://assets.mixkit.co/videos/preview/mixkit-golf-player-swinging-on-the-green-field-41865-large.mp4"
-      ],
       "photos": [
         "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=300&q=80",
-        "https://images.unsplash.com/photo-1592919010614-5853975c8038?auto=format&fit=crop&w=300&q=80"
+        "images/paul.jpg",
+        "images/2015/photos/2015rich.jpeg"
       ],
       "highlights": [
         "Champion of the Greens: Fergus with a phenomenal 83 points total.",
         "Runner Up Excellence: Chris securing a proud second place with 65 points.",
         "Venues conquered: La Cala Campo Europa, Alhaurin, Parador Malaga"
-      ]
+      ],
+      "videos": []
     },
     "2016": {
       "venue": "Spain (Marbella Golf Club, Cabopino, Los Arqueros)",
@@ -479,18 +399,20 @@ const FACTORY_DATA = {
           "par3Total": 15
         }
       ],
-      "videos": [
-        "https://assets.mixkit.co/videos/preview/mixkit-golf-player-swinging-on-the-green-field-41865-large.mp4"
-      ],
       "photos": [
-        "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=300&q=80",
-        "https://images.unsplash.com/photo-1592919010614-5853975c8038?auto=format&fit=crop&w=300&q=80"
+        "images/2016/photos/2016nick.JPG",
+        "images/2016/photos/2016group.JPG",
+        "images/2016/photos/2016mark.JPG",
+        "images/2016/photos/2016paul.JPG",
+        "images/2016/photos/2016stevenick.JPG",
+        "images/2016/photos/2016thebus.JPG"
       ],
       "highlights": [
         "Champion of the Greens: Richard with a phenomenal 66 points total.",
         "Runner Up Excellence: Chris securing a proud second place with 66 points.",
         "Venues conquered: Marbella Golf Club, Cabopino, Los Arqueros"
-      ]
+      ],
+      "videos": []
     },
     "2017": {
       "venue": "UK (OLD THORNS - UK)",
@@ -609,18 +531,17 @@ const FACTORY_DATA = {
           "par3Total": 11
         }
       ],
-      "videos": [
-        "https://assets.mixkit.co/videos/preview/mixkit-golf-player-swinging-on-the-green-field-41865-large.mp4"
-      ],
       "photos": [
         "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=300&q=80",
-        "https://images.unsplash.com/photo-1592919010614-5853975c8038?auto=format&fit=crop&w=300&q=80"
+        "images/2017/photos/2017group.JPG",
+        "images/2017/photos/2017paul.JPG"
       ],
       "highlights": [
         "Champion of the Greens: Nick with a phenomenal 48 points total.",
         "Runner Up Excellence: Richard securing a proud second place with 46 points.",
         "Venues conquered: OLD THORNS - UK"
-      ]
+      ],
+      "videos": []
     },
     "2018": {
       "venue": "Reading (Pine Ridge, Reading GC, Bird Hills)",
@@ -755,9 +676,6 @@ const FACTORY_DATA = {
           "par3Total": 19
         }
       ],
-      "videos": [
-        "https://assets.mixkit.co/videos/preview/mixkit-golf-player-swinging-on-the-green-field-41865-large.mp4"
-      ],
       "photos": [
         "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=300&q=80",
         "https://images.unsplash.com/photo-1592919010614-5853975c8038?auto=format&fit=crop&w=300&q=80"
@@ -766,7 +684,8 @@ const FACTORY_DATA = {
         "Champion of the Greens: Fergus with a phenomenal 88 points total.",
         "Runner Up Excellence: Nick securing a proud second place with 80 points.",
         "Venues conquered: Pine Ridge, Reading GC, Bird Hills"
-      ]
+      ],
+      "videos": []
     },
     "2019": {
       "venue": "Portugal (Not Specified)",
@@ -901,9 +820,6 @@ const FACTORY_DATA = {
           "par3Total": 18
         }
       ],
-      "videos": [
-        "https://assets.mixkit.co/videos/preview/mixkit-golf-player-swinging-on-the-green-field-41865-large.mp4"
-      ],
       "photos": [
         "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=300&q=80",
         "https://images.unsplash.com/photo-1592919010614-5853975c8038?auto=format&fit=crop&w=300&q=80"
@@ -912,7 +828,8 @@ const FACTORY_DATA = {
         "Champion of the Greens: Mark with a phenomenal 75 points total.",
         "Runner Up Excellence: Chris securing a proud second place with 74 points.",
         "Venues conquered: Not Specified"
-      ]
+      ],
+      "videos": []
     },
     "2020": {
       "venue": "Reading (Bird Hills)",
@@ -1031,9 +948,6 @@ const FACTORY_DATA = {
           "par3Total": 9
         }
       ],
-      "videos": [
-        "https://assets.mixkit.co/videos/preview/mixkit-golf-player-swinging-on-the-green-field-41865-large.mp4"
-      ],
       "photos": [
         "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=300&q=80",
         "https://images.unsplash.com/photo-1592919010614-5853975c8038?auto=format&fit=crop&w=300&q=80"
@@ -1042,7 +956,8 @@ const FACTORY_DATA = {
         "Champion of the Greens: Nick with a phenomenal 69 points total.",
         "Runner Up Excellence: Mark securing a proud second place with 59 points.",
         "Venues conquered: Bird Hills"
-      ]
+      ],
+      "videos": []
     },
     "2021": {
       "venue": "Reading (WOKEFIELD PARK - Reading)",
@@ -1161,9 +1076,6 @@ const FACTORY_DATA = {
           "par3Total": 7
         }
       ],
-      "videos": [
-        "https://assets.mixkit.co/videos/preview/mixkit-golf-player-swinging-on-the-green-field-41865-large.mp4"
-      ],
       "photos": [
         "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=300&q=80",
         "https://images.unsplash.com/photo-1592919010614-5853975c8038?auto=format&fit=crop&w=300&q=80"
@@ -1172,7 +1084,8 @@ const FACTORY_DATA = {
         "Champion of the Greens: Paul with a phenomenal 65 points total.",
         "Runner Up Excellence: Mark securing a proud second place with 64 points.",
         "Venues conquered: WOKEFIELD PARK - Reading"
-      ]
+      ],
+      "videos": []
     },
     "2022": {
       "venue": "Spain (EUROPE, ASIA, AMERICA)",
@@ -1307,9 +1220,6 @@ const FACTORY_DATA = {
           "par3Total": 15
         }
       ],
-      "videos": [
-        "https://assets.mixkit.co/videos/preview/mixkit-golf-player-swinging-on-the-green-field-41865-large.mp4"
-      ],
       "photos": [
         "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=300&q=80",
         "https://images.unsplash.com/photo-1592919010614-5853975c8038?auto=format&fit=crop&w=300&q=80"
@@ -1318,7 +1228,8 @@ const FACTORY_DATA = {
         "Champion of the Greens: Fergus with a phenomenal 86 points total.",
         "Runner Up Excellence: Richard securing a proud second place with 85 points.",
         "Venues conquered: EUROPE, ASIA, AMERICA"
-      ]
+      ],
+      "videos": []
     },
     "2023": {
       "venue": "PORTUGAL - Lagos (Espiche Golf, Boavista Golf, Palmares - Praia & Alvor)",
@@ -1453,9 +1364,6 @@ const FACTORY_DATA = {
           "par3Total": 20
         }
       ],
-      "videos": [
-        "https://assets.mixkit.co/videos/preview/mixkit-golf-player-swinging-on-the-green-field-41865-large.mp4"
-      ],
       "photos": [
         "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=300&q=80",
         "https://images.unsplash.com/photo-1592919010614-5853975c8038?auto=format&fit=crop&w=300&q=80"
@@ -1464,7 +1372,8 @@ const FACTORY_DATA = {
         "Champion of the Greens: Paul with a phenomenal 88 points total.",
         "Runner Up Excellence: Nick securing a proud second place with 84 points.",
         "Venues conquered: Espiche Golf, Boavista Golf, Palmares - Praia & Alvor"
-      ]
+      ],
+      "videos": []
     },
     "2024": {
       "venue": "Portugal - PESTANA (Vale da Pinta, Gramacho)",
@@ -1583,9 +1492,6 @@ const FACTORY_DATA = {
           "par3Total": 3
         }
       ],
-      "videos": [
-        "https://assets.mixkit.co/videos/preview/mixkit-golf-player-swinging-on-the-green-field-41865-large.mp4"
-      ],
       "photos": [
         "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=300&q=80",
         "https://images.unsplash.com/photo-1592919010614-5853975c8038?auto=format&fit=crop&w=300&q=80"
@@ -1594,7 +1500,8 @@ const FACTORY_DATA = {
         "Champion of the Greens: Fergus with a phenomenal 71 points total.",
         "Runner Up Excellence: Richard securing a proud second place with 69 points.",
         "Venues conquered: Vale da Pinta, Gramacho"
-      ]
+      ],
+      "videos": []
     },
     "2025": {
       "venue": "PORTUGAL - Praia D'el Rey (Royal Obidos, West Cliffs)",
@@ -1713,18 +1620,99 @@ const FACTORY_DATA = {
           "par3Total": 7
         }
       ],
-      "videos": [
-        "https://assets.mixkit.co/videos/preview/mixkit-golf-player-swinging-on-the-green-field-41865-large.mp4"
-      ],
       "photos": [
-        "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=300&q=80",
-        "https://images.unsplash.com/photo-1592919010614-5853975c8038?auto=format&fit=crop&w=300&q=80"
+        "images/2016/photos/2016group.JPG",
+        "images/2016/photos/2016nick.JPG",
+        "images/2016/photos/2016paul.JPG",
+        "images/2016/photos/2016stevenick.JPG",
+        "images/2016/photos/2016thebus.JPG",
+        "images/2016/photos/2016mark.JPG"
       ],
       "highlights": [
         "Champion of the Greens: Nick with a phenomenal 51 points total.",
         "Runner Up Excellence: Fergus securing a proud second place with 41 points.",
         "Venues conquered: Royal Obidos, West Cliffs"
-      ]
+      ],
+      "videos": []
     }
-  }
+  },
+  "par3RollOfHonour": [
+    {
+      "year": 2015,
+      "venue": "Spain (La Cala Campo Europa, Alhaurin, Parador Malaga)",
+      "winner": "Fergus",
+      "score": "22 pts",
+      "runnerUp": "Paul"
+    },
+    {
+      "year": 2016,
+      "venue": "Spain (Marbella Golf Club, Cabopino, Los Arqueros)",
+      "winner": "Paul",
+      "score": "19 pts",
+      "runnerUp": "Chris"
+    },
+    {
+      "year": 2017,
+      "venue": "UK (OLD THORNS - UK)",
+      "winner": "Paul",
+      "score": "14 pts",
+      "runnerUp": "Mark"
+    },
+    {
+      "year": 2018,
+      "venue": "Reading (Pine Ridge, Reading GC, Bird Hills)",
+      "winner": "Mark",
+      "score": "25 pts",
+      "runnerUp": "Paul"
+    },
+    {
+      "year": 2019,
+      "venue": "Portugal (Not Specified)",
+      "winner": "Mark",
+      "score": "25 pts",
+      "runnerUp": "Chris"
+    },
+    {
+      "year": 2020,
+      "venue": "Reading (Bird Hills)",
+      "winner": "Fergus",
+      "score": "16 pts",
+      "runnerUp": "Mark"
+    },
+    {
+      "year": 2021,
+      "venue": "Reading (WOKEFIELD PARK - Reading)",
+      "winner": "Fergus",
+      "score": "18 pts",
+      "runnerUp": "Paul"
+    },
+    {
+      "year": 2022,
+      "venue": "Spain (EUROPE, ASIA, AMERICA)",
+      "winner": "Mark",
+      "score": "27 pts",
+      "runnerUp": "Richard"
+    },
+    {
+      "year": 2023,
+      "venue": "PORTUGAL - Lagos (Espiche Golf, Boavista Golf, Palmares - Praia & Alvor)",
+      "winner": "Paul",
+      "score": "31 pts",
+      "runnerUp": "Chris"
+    },
+    {
+      "year": 2024,
+      "venue": "Portugal - PESTANA (Vale da Pinta, Gramacho)",
+      "winner": "Mark",
+      "score": "10 pts",
+      "runnerUp": "Richard"
+    },
+    {
+      "year": 2025,
+      "venue": "PORTUGAL - Praia D'el Rey (Royal Obidos, West Cliffs)",
+      "winner": "Nick",
+      "score": "20 pts",
+      "runnerUp": "Paul"
+    }
+  ]
 };
