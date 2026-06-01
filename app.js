@@ -134,8 +134,18 @@ function loadState() {
                     }
                 }
             }
+            // Explicit Casing Sync Check: if any player avatar contains a lowercase name (fergus, richard, paul, steve, mark, nick)
+            if (!needsAvatarSync && state.players) {
+                const lowercaseNames = ["fergus", "richard", "paul", "steve", "mark", "nick"];
+                for (const p of state.players) {
+                    if (p.avatar && lowercaseNames.some(name => p.avatar.includes(name))) {
+                        needsAvatarSync = true;
+                        break;
+                    }
+                }
+            }
             if (needsAvatarSync) {
-                console.log("Cached state contains stale placeholder avatars. Synchronizing contender profiles...");
+                console.log("Cached state contains stale or lowercase player avatars. Synchronizing contender profiles...");
                 state.players = JSON.parse(JSON.stringify(FACTORY_DATA.players));
                 
                 // Also sync years' photos presets just in case they have unsplash placeholders
