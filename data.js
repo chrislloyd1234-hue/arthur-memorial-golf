@@ -6,7 +6,7 @@ const FACTORY_DATA = {
       "nickname": "The European Master",
       "bio": "Incredibly consistent under pressure. Plays a precision-based game with soft irons and has conquering consistency across Spain and Portugal fairways.",
       "handicap": 18,
-      "avatar": "images/Fergus.jpg",
+      "avatar": "images/fergus.jpg",
       "joined": 2015
     },
     {
@@ -15,7 +15,7 @@ const FACTORY_DATA = {
       "nickname": "Steady Hand",
       "bio": "A classic golfer with an exceptionally repetitive backswing. Prefers straight, clean fairways and excels at chipping onto fast greens.",
       "handicap": 18,
-      "avatar": "images/Richard.jpg",
+      "avatar": "images/richard.jpg",
       "joined": 2015
     },
     {
@@ -24,7 +24,7 @@ const FACTORY_DATA = {
       "nickname": "Palmares Puncher",
       "bio": "Strong driving power, particularly legendary for a stunning 38-point round at Palmares in 2023. Plays with deep passion.",
       "handicap": 18,
-      "avatar": "images/Paul.jpg",
+      "avatar": "images/paul.jpg",
       "joined": 2015
     },
     {
@@ -42,7 +42,7 @@ const FACTORY_DATA = {
       "nickname": "Fairway Diplomat",
       "bio": "Known for unparalleled sportsmanship and hilarious post-round clubhouse banter. Always keeps his head cool in tricky lies.",
       "handicap": 18,
-      "avatar": "images/Steve.jpg",
+      "avatar": "images/steve.jpg",
       "joined": 2015
     },
     {
@@ -51,7 +51,7 @@ const FACTORY_DATA = {
       "nickname": "The Wokefield Wizard",
       "bio": "A strategic iron player who thrives on tough UK layouts, carding a legendary 36 points in Round 1 of Wokefield Park.",
       "handicap": 18,
-      "avatar": "images/Mark.jpg",
+      "avatar": "images/mark.jpg",
       "joined": 2015
     },
     {
@@ -60,7 +60,7 @@ const FACTORY_DATA = {
       "nickname": "The Bird Hills Bomber",
       "bio": "Carded a blistering 35 points in both rounds of Bird Hills 2020. Plays with a long draw and superb composure.",
       "handicap": 18,
-      "avatar": "images/Nick.jpg",
+      "avatar": "images/nick.jpg",
       "joined": 2016
     },
     {
@@ -1621,14 +1621,12 @@ const FACTORY_DATA = {
         }
       ],
       "photos": [
-        "images/2025/photos/2025group1.jpg",
-        "images/2025/photos/2025fergus.jpg",
-        "images/2025/photos/2025mark.jpg",
-        "images/2025/photos/2025nick.jpg",
-        "images/2025/photos/2025paul.jpg",
-        "images/2025/photos/2025rich.jpg",
-        "images/2025/photos/2025steve.jpg",
-        "images/2025/photos/2025stu.jpg"
+        "images/2016/photos/2016group.JPG",
+        "images/2016/photos/2016nick.JPG",
+        "images/2016/photos/2016paul.JPG",
+        "images/2016/photos/2016stevenick.JPG",
+        "images/2016/photos/2016thebus.JPG",
+        "images/2016/photos/2016mark.JPG"
       ],
       "highlights": [
         "Champion of the Greens: Nick with a phenomenal 51 points total.",

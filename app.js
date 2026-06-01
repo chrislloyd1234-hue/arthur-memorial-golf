@@ -149,6 +149,58 @@ function loadState() {
                 
                 saveToLocalStorage();
             }
+
+            // Self-correction check: if loaded year gallery photos differ from FACTORY_DATA (e.g., brand new photos pushed to Git)
+            let needsPhotosSync = false;
+            if (state.years && FACTORY_DATA.years) {
+                for (let y in FACTORY_DATA.years) {
+                    if (state.years[y] && FACTORY_DATA.years[y].photos) {
+                        const lPhotos = state.years[y].photos || [];
+                        const fPhotos = FACTORY_DATA.years[y].photos || [];
+                        if (lPhotos.length !== fPhotos.length || JSON.stringify(lPhotos) !== JSON.stringify(fPhotos)) {
+                            needsPhotosSync = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            if (needsPhotosSync) {
+                console.log("Cached state contains out-of-sync year gallery photos. Synchronizing...");
+                if (state.years && FACTORY_DATA.years) {
+                    for (let y in FACTORY_DATA.years) {
+                        if (state.years[y] && FACTORY_DATA.years[y].photos) {
+                            state.years[y].photos = JSON.parse(JSON.stringify(FACTORY_DATA.years[y].photos));
+                        }
+                    }
+                }
+                saveToLocalStorage();
+            }
+
+            // Self-correction check: if loaded year gallery videos differ from FACTORY_DATA
+            let needsVideosSync = false;
+            if (state.years && FACTORY_DATA.years) {
+                for (let y in FACTORY_DATA.years) {
+                    if (state.years[y] && FACTORY_DATA.years[y].videos) {
+                        const lVideos = state.years[y].videos || [];
+                        const fVideos = FACTORY_DATA.years[y].videos || [];
+                        if (lVideos.length !== fVideos.length || JSON.stringify(lVideos) !== JSON.stringify(fVideos)) {
+                            needsVideosSync = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            if (needsVideosSync) {
+                console.log("Cached state contains out-of-sync year gallery videos. Synchronizing...");
+                if (state.years && FACTORY_DATA.years) {
+                    for (let y in FACTORY_DATA.years) {
+                        if (state.years[y] && FACTORY_DATA.years[y].videos) {
+                            state.years[y].videos = JSON.parse(JSON.stringify(FACTORY_DATA.years[y].videos));
+                        }
+                    }
+                }
+                saveToLocalStorage();
+            }
         } else {
             state = JSON.parse(JSON.stringify(FACTORY_DATA));
             saveToLocalStorage();
