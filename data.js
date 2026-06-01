@@ -1621,12 +1621,14 @@ const FACTORY_DATA = {
         }
       ],
       "photos": [
-        "images/2016/photos/2016group.JPG",
-        "images/2016/photos/2016nick.JPG",
-        "images/2016/photos/2016paul.JPG",
-        "images/2016/photos/2016stevenick.JPG",
-        "images/2016/photos/2016thebus.JPG",
-        "images/2016/photos/2016mark.JPG"
+        "images/2025/photos/2025group1.jpg",
+        "images/2025/photos/2025fergus.jpg",
+        "images/2025/photos/2025mark.jpg",
+        "images/2025/photos/2025nick.jpg",
+        "images/2025/photos/2025paul.jpg",
+        "images/2025/photos/2025rich.jpg",
+        "images/2025/photos/2025steve.jpg",
+        "images/2025/photos/2025stu.jpg"
       ],
       "highlights": [
         "Champion of the Greens: Nick with a phenomenal 51 points total.",
