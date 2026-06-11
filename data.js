@@ -41,7 +41,7 @@ const FACTORY_DATA = {
       "name": "Steve",
       "nickname": "Fairway Diplomat",
       "bio": "Known for unparalleled sportsmanship and hilarious post-round clubhouse banter. Always keeps his head cool in tricky lies.",
-      "handicap": 18,
+      "handicap": 24,
       "avatar": "images/Steve.jpg",
       "joined": 2015
     },
@@ -59,7 +59,7 @@ const FACTORY_DATA = {
       "name": "Nick",
       "nickname": "The Bird Hills Bomber",
       "bio": "Carded a blistering 35 points in both rounds of Bird Hills 2020. Plays with a long draw and superb composure.",
-      "handicap": 18,
+      "handicap": 16,
       "avatar": "images/Nick.jpg",
       "joined": 2016
     },

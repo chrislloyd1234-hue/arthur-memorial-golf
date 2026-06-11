@@ -658,12 +658,14 @@
                 <button onclick="closeModal('modal-player-showcase')" class="absolute top-4 right-4 p-2 bg-black/40 text-white hover:bg-red-500 hover:text-white rounded-full transition-colors z-20" title="Close Modal">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
-                <div class="absolute -bottom-12 left-8 flex items-end gap-5">
+                <!-- Avatar shifted down to overlap the banner edge -->
+                <div class="absolute -bottom-12 left-8 z-10">
                     <img id="showcase-avatar" class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-xl bg-slate-100" src="" alt="">
-                    <div class="pb-2">
-                        <h2 id="showcase-name" class="font-serif-heading text-2xl font-bold text-white drop-shadow-md"></h2>
-                        <p id="showcase-nickname" class="text-xs font-serif-narrative italic text-golf-gold font-bold drop-shadow-sm -mt-0.5"></p>
-                    </div>
+                </div>
+                <!-- Text kept safely inside the dark banner background for high-contrast readability -->
+                <div class="absolute bottom-4 left-36 sm:left-40">
+                    <h2 id="showcase-name" class="font-serif-heading text-2xl font-bold text-white drop-shadow-md"></h2>
+                    <p id="showcase-nickname" class="text-xs font-serif-narrative italic text-golf-gold font-bold drop-shadow-sm -mt-0.5"></p>
                 </div>
             </div>
             

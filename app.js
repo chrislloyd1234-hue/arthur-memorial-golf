@@ -122,30 +122,34 @@ function loadState() {
                 saveToLocalStorage();
             }
             
-            // Self-correction check: if loaded player avatars differ from FACTORY_DATA avatars (e.g. stale Unsplash placeholders or wrong casing)
-            let needsAvatarSync = false;
+            // Self-correction check: if loaded player profiles differ from FACTORY_DATA (e.g. changed handicaps, bios, or wrong casing)
+            let needsPlayerSync = false;
             if (state.players && FACTORY_DATA.players) {
                 for (let i = 0; i < FACTORY_DATA.players.length; i++) {
                     const fPlayer = FACTORY_DATA.players[i];
                     const lPlayer = state.players.find(p => p.id === fPlayer.id);
-                    if (lPlayer && lPlayer.avatar !== fPlayer.avatar) {
-                        needsAvatarSync = true;
+                    if (!lPlayer || 
+                        lPlayer.avatar !== fPlayer.avatar || 
+                        lPlayer.handicap !== fPlayer.handicap || 
+                        lPlayer.nickname !== fPlayer.nickname ||
+                        lPlayer.bio !== fPlayer.bio) {
+                        needsPlayerSync = true;
                         break;
                     }
                 }
             }
             // Explicit Casing Sync Check: if any player avatar contains a lowercase name (fergus, richard, paul, steve, mark, nick)
-            if (!needsAvatarSync && state.players) {
+            if (!needsPlayerSync && state.players) {
                 const lowercaseNames = ["fergus", "richard", "paul", "steve", "mark", "nick"];
                 for (const p of state.players) {
                     if (p.avatar && lowercaseNames.some(name => p.avatar.includes(name))) {
-                        needsAvatarSync = true;
+                        needsPlayerSync = true;
                         break;
                     }
                 }
             }
-            if (needsAvatarSync) {
-                console.log("Cached state contains stale or lowercase player avatars. Synchronizing contender profiles...");
+            if (needsPlayerSync) {
+                console.log("Cached state contains stale contender profiles or handicaps. Synchronizing...");
                 state.players = JSON.parse(JSON.stringify(FACTORY_DATA.players));
                 
                 // Also sync years' photos presets just in case they have unsplash placeholders
