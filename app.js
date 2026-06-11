@@ -344,6 +344,7 @@ function navigateTo(viewId) {
     // Trigger specific rendering based on view
     if (viewId === "home") {
         updateHomeCounters();
+        renderHomeMontage();
     } else if (viewId === "honour") {
         renderRollOfHonour();
     } else if (viewId === "years") {
@@ -412,6 +413,85 @@ function updateHomeCounters() {
     document.getElementById("stat-years").innerText = totalYears;
     document.getElementById("stat-players").innerText = totalPlayers;
     document.getElementById("stat-courses").innerText = totalCourses + "+";
+}
+
+// Dynamic Homepage Photo Montage Drawing from the Most Recent Season
+function renderHomeMontage() {
+    const montageContainer = document.getElementById("home-photo-montage");
+    if (!montageContainer) return;
+
+    // 1. Find the most recent year that has photos
+    const sortedYears = Object.keys(state.years).sort((a, b) => b - a);
+    let sourceYear = null;
+    let photos = [];
+
+    for (const y of sortedYears) {
+        if (state.years[y] && state.years[y].photos && state.years[y].photos.length > 0) {
+            sourceYear = y;
+            photos = state.years[y].photos;
+            break;
+        }
+    }
+
+    // Fallback if no years have photos (highly unlikely, but safe)
+    if (!sourceYear || photos.length === 0) {
+        montageContainer.innerHTML = `
+            <div class="col-span-3 h-full relative overflow-hidden rounded-lg border border-golf-gold/30 shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1593111774240-d529f12cf4bb?auto=format&fit=crop&w=800&q=80" alt="Arthur Memorial Tribute" class="w-full h-full object-cover transform group-hover:scale-[1.01] transition-transform duration-700">
+            </div>
+        `;
+        return;
+    }
+
+    // 2. Select first photo (top left on Yearly standings / photos list)
+    const firstPhoto = photos[0];
+
+    // 3. Select 3 random photos from the remaining ones
+    const remainingPhotos = photos.slice(1);
+    let selectedSmallPhotos = [];
+
+    if (remainingPhotos.length > 0) {
+        // Shuffle remaining photos
+        const shuffled = [...remainingPhotos].sort(() => 0.5 - Math.random());
+        selectedSmallPhotos = shuffled.slice(0, 3);
+    }
+
+    // Fallback for smaller photos if there are not enough photos in the year
+    const fallbackPhotos = [
+        "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=300&q=80",
+        "https://images.unsplash.com/photo-1592919010614-5853975c8038?auto=format&fit=crop&w=300&q=80",
+        "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=300&q=80"
+    ];
+
+    let fallbackIndex = 0;
+    while (selectedSmallPhotos.length < 3) {
+        const candidate = fallbackPhotos[fallbackIndex % fallbackPhotos.length];
+        fallbackIndex++;
+        // Avoid duplicating the firstPhoto or already selected small photos
+        if (candidate !== firstPhoto && !selectedSmallPhotos.includes(candidate)) {
+            selectedSmallPhotos.push(candidate);
+        }
+        // Infinite loop guard: if we've cycled through and can't find unique ones, accept candidate
+        if (fallbackIndex > 20) {
+            selectedSmallPhotos.push(candidate);
+        }
+    }
+
+    // 4. Render the grid
+    // Left side: 1 large image (spans 2 columns)
+    // Right side: 3 stacked images in 1 column
+    montageContainer.innerHTML = `
+        <div class="col-span-2 h-full relative group overflow-hidden rounded-lg border border-golf-gold/30 shadow-md bg-slate-900">
+            <img src="${firstPhoto}" alt="Memorial Major Highlight" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="col-span-1 flex flex-col gap-3 h-full">
+            ${selectedSmallPhotos.map((img, idx) => `
+                <div class="flex-1 h-0 relative group overflow-hidden rounded-lg border border-golf-gold/30 shadow-sm bg-slate-900">
+                    <img src="${img}" alt="Memorial Moment ${idx + 1}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                </div>
+            `).join("")}
+        </div>
+    `;
 }
 
 // Switch media tabs (Photos / Videos) inside Yearly Chronicles Media Vault
