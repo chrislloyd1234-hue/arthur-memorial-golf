@@ -1762,8 +1762,14 @@ const FACTORY_DATA = {
         }
       ],
       "photos": [
-        "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=300&q=80",
-        "https://images.unsplash.com/photo-1592919010614-5853975c8038?auto=format&fit=crop&w=300&q=80"
+        "images/2026/Photos/2026group1.jpg",
+        "images/2026/Photos/2026group2.jpg",
+        "images/2026/Photos/2026group3.jpg",
+        "images/2026/Photos/2026champion.jpg",
+        "images/2026/Photos/2026steve.jpg",
+        "images/2026/Photos/2026mark.jpg",
+        "images/2026/Photos/2026nick.jpg",
+        "images/2026/Photos/2026paul.jpg"
       ],
       "highlights": [
         "Champion of the Greens: Steve with a phenomenal 50 points total.",
