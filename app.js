@@ -436,7 +436,7 @@ function renderHomeMontage() {
     // Fallback if no years have photos (highly unlikely, but safe)
     if (!sourceYear || photos.length === 0) {
         montageContainer.innerHTML = `
-            <div class="col-span-3 h-full relative overflow-hidden rounded-lg border border-golf-gold/30 shadow-2xl">
+            <div class="col-span-3 h-full relative group overflow-hidden rounded-lg border border-golf-gold/30 shadow-2xl bg-slate-900 cursor-zoom-in" onclick="openLightbox('https://images.unsplash.com/photo-1593111774240-d529f12cf4bb?auto=format&fit=crop&w=800&q=80')">
                 <img src="https://images.unsplash.com/photo-1593111774240-d529f12cf4bb?auto=format&fit=crop&w=800&q=80" alt="Arthur Memorial Tribute" class="w-full h-full object-cover transform group-hover:scale-[1.01] transition-transform duration-700">
             </div>
         `;
@@ -481,16 +481,15 @@ function renderHomeMontage() {
         }
     }
 
-    // 4. Render the grid
     // Left side: 1 large image (spans 2 columns)
     // Right side: 3 stacked images in 1 column
     montageContainer.innerHTML = `
-        <div class="col-span-2 h-full relative group overflow-hidden rounded-lg border border-golf-gold/30 shadow-md bg-slate-900">
+        <div class="col-span-2 h-full relative group overflow-hidden rounded-lg border border-golf-gold/30 shadow-md bg-slate-900 cursor-zoom-in" onclick="openLightbox('${firstPhoto}')">
             <img src="${firstPhoto}" alt="Memorial Major Highlight" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
         </div>
         <div class="col-span-1 flex flex-col gap-3 h-full">
             ${selectedSmallPhotos.map((img, idx) => `
-                <div class="flex-1 h-0 relative group overflow-hidden rounded-lg border border-golf-gold/30 shadow-sm bg-slate-900">
+                <div class="flex-1 h-0 relative group overflow-hidden rounded-lg border border-golf-gold/30 shadow-sm bg-slate-900 cursor-zoom-in" onclick="openLightbox('${img}')">
                     <img src="${img}" alt="Memorial Moment ${idx + 1}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
                 </div>
             `).join("")}
@@ -867,7 +866,7 @@ function renderYearlyStandings() {
                 const wrapper = document.createElement("div");
                 wrapper.className = "relative group rounded-lg overflow-hidden border border-slate-200 shadow-sm aspect-[4/3] bg-slate-900";
                 wrapper.innerHTML = `
-                    <img src="${photoUrl}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 hover:opacity-90" alt="Golf Challenge Moment" onerror="this.src='https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=300&q=80'">
+                    <img src="${photoUrl}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 hover:opacity-90 cursor-zoom-in" alt="Golf Challenge Moment" onerror="this.src='https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=300&q=80'" onclick="openLightbox(this.src)">
                     <button onclick="removePhoto(${pIdx})" class="absolute top-2 right-2 p-1.5 bg-black/60 hover:bg-red-600 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity" title="Remove Photo">
                         <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
                     </button>
@@ -1192,6 +1191,39 @@ function closeModal(modalId) {
     if (modal) {
         modal.classList.add("hidden");
     }
+}
+
+// Image Lightbox Modal Management
+function openLightbox(imgUrl) {
+    const lightbox = document.getElementById("image-lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    if (!lightbox || !lightboxImg) return;
+    
+    lightboxImg.src = imgUrl;
+    lightbox.classList.remove("hidden");
+    lightbox.classList.add("flex");
+    
+    setTimeout(() => {
+        lightboxImg.classList.remove("scale-95");
+        lightboxImg.classList.add("scale-100");
+    }, 10);
+    
+    document.body.classList.add("overflow-hidden");
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById("image-lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    if (!lightbox || !lightboxImg) return;
+    
+    lightboxImg.classList.remove("scale-100");
+    lightboxImg.classList.add("scale-95");
+    
+    setTimeout(() => {
+        lightbox.classList.add("hidden");
+        lightbox.classList.remove("flex");
+        document.body.classList.remove("overflow-hidden");
+    }, 150);
 }
 
 // Player Profile Editing handlers

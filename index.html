@@ -31,14 +31,14 @@
     </script>
 
     <!-- Premium Custom Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=1781194747">
+    <link rel="stylesheet" href="style.css?v=1781195097">
     
     <!-- Lucide Icons for beautiful modern vectors -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Deferred JS files -->
-    <script src="data.js?v=1781194747" defer></script>
-    <script src="app.js?v=1781194747" defer></script>
+    <script src="data.js?v=1781195097" defer></script>
+    <script src="app.js?v=1781195097" defer></script>
 </head>
 <body class="bg-golf-50 text-slate-800 font-sans min-h-full flex flex-col selection:bg-golf-gold selection:text-white">
 
@@ -164,17 +164,17 @@
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h3 class="text-2xl font-serif-heading text-center text-golf-gold mb-12 uppercase tracking-widest">Tournament Pillars</h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="bg-golf-900/50 p-8 rounded-xl border border-golf-gold/20 hover:border-golf-gold transition-all duration-300 text-center shadow-lg transform hover:-translate-y-1">
+                        <div class="bg-golf-900/50 p-8 rounded-xl border border-golf-gold/20 hover:border-golf-gold transition-all duration-300 text-center shadow-lg transform hover:-translate-y-1 cursor-pointer" onclick="navigateTo('honour')">
                             <i data-lucide="medal" class="w-10 h-10 text-golf-gold mx-auto mb-4"></i>
                             <h4 class="font-serif-heading text-lg font-bold mb-2 text-golf-goldlight">The Roll of Honour</h4>
                             <p class="text-sm text-slate-300 leading-relaxed">Tracking every single champion back to the inaugural 2007 classic, recording venues, winning scores, and historic runner-ups.</p>
                         </div>
-                        <div class="bg-golf-900/50 p-8 rounded-xl border border-golf-gold/20 hover:border-golf-gold transition-all duration-300 text-center shadow-lg transform hover:-translate-y-1">
+                        <div class="bg-golf-900/50 p-8 rounded-xl border border-golf-gold/20 hover:border-golf-gold transition-all duration-300 text-center shadow-lg transform hover:-translate-y-1 cursor-pointer" onclick="navigateTo('players')">
                             <i data-lucide="users" class="w-10 h-10 text-golf-gold mx-auto mb-4"></i>
                             <h4 class="font-serif-heading text-lg font-bold mb-2 text-golf-goldlight">The Contenders</h4>
                             <p class="text-sm text-slate-300 leading-relaxed">Detailed player biographies, lifetime achievements, unique golf playstyles, individual handicaps, and editable bios.</p>
                         </div>
-                        <div class="bg-golf-900/50 p-8 rounded-xl border border-golf-gold/20 hover:border-golf-gold transition-all duration-300 text-center shadow-lg transform hover:-translate-y-1">
+                        <div class="bg-golf-900/50 p-8 rounded-xl border border-golf-gold/20 hover:border-golf-gold transition-all duration-300 text-center shadow-lg transform hover:-translate-y-1 cursor-pointer" onclick="navigateTo('years')">
                             <i data-lucide="calendar" class="w-10 h-10 text-golf-gold mx-auto mb-4"></i>
                             <h4 class="font-serif-heading text-lg font-bold mb-2 text-golf-goldlight">Standings & Chronicles</h4>
                             <p class="text-sm text-slate-300 leading-relaxed">Interactive annual scoring details, photobooks, and written narratives capturing the banter and legendary moments since 2015.</p>
@@ -662,7 +662,7 @@
                 </button>
                 <!-- Avatar shifted down to overlap the banner edge -->
                 <div class="absolute -bottom-12 left-8 z-10">
-                    <img id="showcase-avatar" class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-xl bg-slate-100" src="" alt="">
+                    <img id="showcase-avatar" class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-xl bg-slate-100 cursor-zoom-in" src="" alt="" onclick="openLightbox(this.src)">
                 </div>
                 <!-- Text kept safely inside the dark banner background for high-contrast readability -->
                 <div class="absolute bottom-4 left-36 sm:left-40">
@@ -749,6 +749,13 @@
             <span class="text-xs font-bold tracking-wide block" id="ui-alert-msg">Profile updated successfully!</span>
         </div>
     </div>
-
+    
+    <!-- Image Lightbox Modal -->
+    <div id="image-lightbox" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out" onclick="closeLightbox()">
+        <button class="absolute top-4 right-4 text-white hover:text-golf-gold transition-colors p-2 z-[110]" onclick="closeLightbox()">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <img id="lightbox-img" src="" alt="Enlarged view" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl border border-golf-gold/20 transform scale-95 transition-transform duration-300">
+    </div>
 </body>
 </html>
