@@ -75,6 +75,13 @@ const FACTORY_DATA = {
   ],
   "rollOfHonour": [
     {
+      "year": 2026,
+      "winner": "Steve",
+      "score": "50 pts",
+      "runnerUp": "Mark",
+      "venue": "SPAIN - LA CALA (ASIA, America)"
+    },
+    {
       "year": 2025,
       "winner": "Nick",
       "score": "51 pts",
@@ -1636,9 +1643,144 @@ const FACTORY_DATA = {
         "Venues conquered: Royal Obidos, West Cliffs"
       ],
       "videos": []
+    },
+    "2026": {
+      "venue": "SPAIN - LA CALA (ASIA, America)",
+      "narrative": "The 2026 Arthur Hothersall Memorial was hosted at the spectacular courses in SPAIN - LA CALA.\n\nA total of 2 grueling rounds tested the contenders. In a thrilling showcase of skill, Steve clinched the title, carding a masterclass total of 50 Stableford points!\n\nMark fought bravely to finish as the runner-up with 49 points, while the rest of the society was left in the wake of their fairways brilliance. It was another historic year characterized by incredible golf, deep bonds, and legendary 19th hole chronicles.",
+      "scores": [
+        {
+          "playerId": "p5",
+          "playerName": "Steve",
+          "rounds": [
+            19,
+            31
+          ],
+          "total": 50,
+          "par3Rounds": [
+            8,
+            8
+          ],
+          "par3Total": 16
+        },
+        {
+          "playerId": "p6",
+          "playerName": "Mark",
+          "rounds": [
+            25,
+            24
+          ],
+          "total": 49,
+          "par3Rounds": [
+            7,
+            5
+          ],
+          "par3Total": 12
+        },
+        {
+          "playerId": "p8",
+          "playerName": "Stuart",
+          "rounds": [
+            25,
+            22
+          ],
+          "total": 47,
+          "par3Rounds": [
+            6,
+            3
+          ],
+          "par3Total": 9
+        },
+        {
+          "playerId": "p4",
+          "playerName": "Chris",
+          "rounds": [
+            18,
+            29
+          ],
+          "total": 47,
+          "par3Rounds": [
+            6,
+            11
+          ],
+          "par3Total": 17
+        },
+        {
+          "playerId": "p7",
+          "playerName": "Nick",
+          "rounds": [
+            22,
+            24
+          ],
+          "total": 46,
+          "par3Rounds": [
+            7,
+            6
+          ],
+          "par3Total": 13
+        },
+        {
+          "playerId": "p3",
+          "playerName": "Paul",
+          "rounds": [
+            19,
+            27
+          ],
+          "total": 46,
+          "par3Rounds": [
+            8,
+            8
+          ],
+          "par3Total": 16
+        },
+        {
+          "playerId": "p1",
+          "playerName": "Fergus",
+          "rounds": [
+            21,
+            22
+          ],
+          "total": 43,
+          "par3Rounds": [
+            10,
+            7
+          ],
+          "par3Total": 17
+        },
+        {
+          "playerId": "p2",
+          "playerName": "Richard",
+          "rounds": [
+            19,
+            6
+          ],
+          "total": 25,
+          "par3Rounds": [
+            7,
+            0
+          ],
+          "par3Total": 7
+        }
+      ],
+      "photos": [
+        "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=300&q=80",
+        "https://images.unsplash.com/photo-1592919010614-5853975c8038?auto=format&fit=crop&w=300&q=80"
+      ],
+      "highlights": [
+        "Champion of the Greens: Steve with a phenomenal 50 points total.",
+        "Runner Up Excellence: Mark securing a proud second place with 49 points.",
+        "Venues conquered: ASIA, America"
+      ],
+      "videos": []
     }
   },
   "par3RollOfHonour": [
+    {
+      "year": 2026,
+      "venue": "SPAIN - LA CALA (ASIA, America)",
+      "winner": "Chris & Fergus",
+      "score": "17 pts",
+      "runnerUp": "Steve & Paul"
+    },
     {
       "year": 2015,
       "venue": "Spain (La Cala Campo Europa, Alhaurin, Parador Malaga)",

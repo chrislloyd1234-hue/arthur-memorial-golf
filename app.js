@@ -9,7 +9,7 @@ let state = {
 };
 
 // Currently Active Year for Yearly Standings & Chronicles View
-let activeYear = "2025";
+let activeYear = "2026";
 let activeView = "home";
 let activeHonourType = "main";
 let activeEditorCategory = "main";
@@ -209,6 +209,50 @@ function loadState() {
                         }
                     }
                 }
+                saveToLocalStorage();
+            }
+
+            // Self-correction check: if a new tournament year is completely missing in cached state
+            let needsYearsSync = false;
+            if (FACTORY_DATA.years) {
+                if (!state.years) {
+                    needsYearsSync = true;
+                } else {
+                    for (let y in FACTORY_DATA.years) {
+                        if (!state.years[y]) {
+                            needsYearsSync = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            if (needsYearsSync) {
+                console.log("Cached state is missing new tournament years. Synchronizing...");
+                if (!state.years) state.years = {};
+                for (let y in FACTORY_DATA.years) {
+                    if (!state.years[y]) {
+                        state.years[y] = JSON.parse(JSON.stringify(FACTORY_DATA.years[y]));
+                    }
+                }
+                saveToLocalStorage();
+            }
+
+            // Self-correction check: if Roll of Honour lists have new records (e.g. 2026 added)
+            let needsHonourSync = false;
+            if (FACTORY_DATA.rollOfHonour && state.rollOfHonour) {
+                if (state.rollOfHonour.length !== FACTORY_DATA.rollOfHonour.length) {
+                    needsHonourSync = true;
+                }
+            }
+            if (FACTORY_DATA.par3RollOfHonour && state.par3RollOfHonour) {
+                if (state.par3RollOfHonour.length !== FACTORY_DATA.par3RollOfHonour.length) {
+                    needsHonourSync = true;
+                }
+            }
+            if (needsHonourSync) {
+                console.log("Cached state contains out-of-sync Roll of Honour lists. Synchronizing...");
+                state.rollOfHonour = JSON.parse(JSON.stringify(FACTORY_DATA.rollOfHonour || []));
+                state.par3RollOfHonour = JSON.parse(JSON.stringify(FACTORY_DATA.par3RollOfHonour || []));
                 saveToLocalStorage();
             }
         } else {
