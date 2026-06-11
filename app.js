@@ -17,13 +17,13 @@ let activeYearStandingsCategory = "main";
 let activeMediaCategory = "photos";
 let editingPlayerId = null;
 
+const isLocal = window.location.hostname === "localhost" || 
+                window.location.hostname === "127.0.0.1" || 
+                window.location.protocol === "file:";
+
 // Initialize Application
 document.addEventListener("DOMContentLoaded", () => {
     // Environment Failsafe: Hide admin suite buttons if not running locally
-    const isLocal = window.location.hostname === "localhost" || 
-                    window.location.hostname === "127.0.0.1" || 
-                    window.location.protocol === "file:";
-                    
     if (!isLocal) {
         const btnAdmin = document.getElementById("nav-admin");
         const btnAdminMobile = document.getElementById("nav-admin-mobile");
@@ -291,9 +291,6 @@ function saveToLocalStorage() {
 function navigateTo(viewId) {
     // Environment Failsafe: block Admin Suite access on public site
     if (viewId === "admin") {
-        const isLocal = window.location.hostname === "localhost" || 
-                        window.location.hostname === "127.0.0.1" || 
-                        window.location.protocol === "file:";
         if (!isLocal) {
             console.warn("[Security] Admin Suite access blocked in production environments.");
             viewId = "home";
@@ -846,7 +843,19 @@ function renderYearlyStandings() {
 
     // 5. Render Narrative Writeup
     const narrativeBox = document.getElementById("year-narrative-box");
-    narrativeBox.innerText = yearData.narrative || "No chronicles compiled yet for this edition. Put down some words by clicking 'Edit Narrative' above!";
+    narrativeBox.innerText = yearData.narrative || (isLocal ? "No chronicles compiled yet for this edition. Put down some words by clicking 'Edit Narrative' above!" : "No chronicles compiled yet for this edition.");
+
+    // Hide/show administrative narrative & media upload buttons based on environment
+    const btnEditNarrative = document.querySelector('button[onclick="editCurrentNarrative()"]');
+    if (btnEditNarrative) {
+        if (isLocal) btnEditNarrative.classList.remove("hidden");
+        else btnEditNarrative.classList.add("hidden");
+    }
+    const btnAddMedia = document.getElementById("add-media-btn");
+    if (btnAddMedia) {
+        if (isLocal) btnAddMedia.classList.remove("hidden");
+        else btnAddMedia.classList.add("hidden");
+    }
 
     // 6. Render Photo/Video highlights (Media Vault)
     const mediaContainer = document.getElementById("photo-gallery-container");
@@ -867,9 +876,11 @@ function renderYearlyStandings() {
                 wrapper.className = "relative group rounded-lg overflow-hidden border border-slate-200 shadow-sm aspect-[4/3] bg-slate-900";
                 wrapper.innerHTML = `
                     <img src="${photoUrl}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 hover:opacity-90 cursor-zoom-in" alt="Golf Challenge Moment" onerror="this.src='https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=300&q=80'" onclick="openLightbox(this.src)">
+                    ${isLocal ? `
                     <button onclick="removePhoto(${pIdx})" class="absolute top-2 right-2 p-1.5 bg-black/60 hover:bg-red-600 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity" title="Remove Photo">
                         <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
                     </button>
+                    ` : ""}
                 `;
                 mediaContainer.appendChild(wrapper);
             });
@@ -889,9 +900,11 @@ function renderYearlyStandings() {
                 wrapper.className = "relative group rounded-lg overflow-hidden border border-slate-200 shadow-sm aspect-[4/3] bg-black";
                 wrapper.innerHTML = `
                     <video src="${videoUrl}" class="w-full h-full object-cover" controls preload="metadata" playsinline></video>
+                    ${isLocal ? `
                     <button onclick="removeVideo(${vIdx})" class="absolute top-2 right-2 p-1.5 bg-black/60 hover:bg-red-600 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10" title="Remove Video">
                         <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
                     </button>
+                    ` : ""}
                 `;
                 mediaContainer.appendChild(wrapper);
             });
@@ -969,9 +982,11 @@ function renderPlayerProfiles() {
                 </div>
                 
                 <!-- Edit button visible on card hover -->
+                ${isLocal ? `
                 <button onclick="event.stopPropagation(); triggerEditPlayer('${player.id}')" class="absolute top-3 right-3 p-2 bg-black/40 text-white rounded-full hover:bg-golf-gold hover:text-golf-900 transition-colors shadow-sm z-10" title="Edit Profile">
                     <i data-lucide="edit-3" class="w-4 h-4"></i>
                 </button>
+                ` : ""}
             </div>
             
             <div class="px-6 pt-16 pb-6 text-center flex-grow flex flex-col justify-between">
