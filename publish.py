@@ -82,6 +82,29 @@ else:
     print("   (If you edited scores or bios, make sure to click 'Export Backup' in the local Admin Suite first.)")
     print("   Proceeding to check for photo updates...")
 
+# 1.5 Apply cache-busting version tags to index.html assets
+try:
+    import re
+    import time
+    index_html_path = os.path.join(PROJECT_DIR, "index.html")
+    if os.path.exists(index_html_path):
+        print("⚡ Applying cache-busting version tags to index.html assets...")
+        with open(index_html_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+            
+        version = int(time.time())
+        content = re.sub(r'href="style\.css(?:\?v=\d+)?"', f'href="style.css?v={version}"', content)
+        content = re.sub(r'src="data\.js(?:\?v=\d+)?"', f'src="data.js?v={version}"', content)
+        content = re.sub(r'src="app\.js(?:\?v=\d+)?"', f'src="app.js?v={version}"', content)
+        
+        with open(index_html_path, 'w', encoding='utf-8') as f:
+            f.write(content)
+        print(f"✅ Cache-busting version {version} applied successfully.")
+    else:
+        print("⚠️ index.html not found, skipping cache-busting.")
+except Exception as e:
+    print(f"⚠️ Error applying cache-busting: {e}")
+
 # 2. Check for Git changes (new photos, modified code)
 print("\n🔍 Checking for updates to push...")
 try:
