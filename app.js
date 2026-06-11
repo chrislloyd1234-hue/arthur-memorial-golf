@@ -443,11 +443,15 @@ function renderHomeMontage() {
         return;
     }
 
-    // 2. Select first photo (top left on Yearly standings / photos list)
-    const firstPhoto = photos[0];
+    // 2. Select primary photo (containing "champion" or default to photos[0])
+    let primaryPhotoIndex = photos.findIndex(p => p.toLowerCase().includes("champion"));
+    if (primaryPhotoIndex === -1) {
+        primaryPhotoIndex = 0;
+    }
+    const firstPhoto = photos[primaryPhotoIndex];
 
     // 3. Select 3 random photos from the remaining ones
-    const remainingPhotos = photos.slice(1);
+    const remainingPhotos = photos.filter((_, idx) => idx !== primaryPhotoIndex);
     let selectedSmallPhotos = [];
 
     if (remainingPhotos.length > 0) {
